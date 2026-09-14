@@ -3,391 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>โปรแกรมลดน้ำหนักและดูแลสุขภาพ (Low Impact)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>EASY WORKOUT - RED & BLACK EDITION</title>
     <style>
         :root {
-            --bg-color: #0f0f0f;
+            --bg-color: #0d0d0d;
             --card-bg: #1a1a1a;
-            --primary: #d90429;
-            --primary-hover: #ef233c;
-            --text-main: #ffffff;
-            --text-muted: #b0b0b0;
-            --border-color: #333333;
-        }
-
-        * {
-            box-sizing: border-box;
+            --accent-red: #ff1e27;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
         }
 
         body {
-            font-family: 'Kanit', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-main);
+            color: var(--text-white);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
 
         .container {
             width: 100%;
-            max-width: 850px;
-            background-color: var(--card-bg);
-            border: 2px solid var(--border-color);
+            max-width: 480px;
+            background: var(--card-bg);
+            border: 2px solid var(--accent-red);
             border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(217, 4, 41, 0.2);
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 25px;
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 15px;
+            padding: 24px;
+            box-shadow: 0 0 20px rgba(255, 30, 39, 0.2);
         }
 
         h1 {
-            color: var(--primary);
-            font-size: 26px;
-            margin: 0 0 8px 0;
-            font-weight: 700;
+            text-align: center;
+            color: var(--accent-red);
+            font-size: 24px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .subtitle {
-            color: var(--text-muted);
+        p.subtitle {
+            text-align: center;
+            color: var(--text-gray);
             font-size: 14px;
-            margin: 0;
-        }
-
-        .info-card {
-            background-color: #000000;
-            border: 1px solid var(--border-color);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            font-size: 14px;
-            color: #d1d1d1;
-        }
-
-        .info-card ul {
-            margin: 5px 0 0 0;
-            padding-left: 20px;
-        }
-
-        /* แถบเลือกวัน */
-        .day-tabs {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 10px;
+            margin-top: 0;
             margin-bottom: 20px;
         }
 
-        .day-tab {
-            background-color: #2b2b2b;
-            color: var(--text-muted);
-            border: 1px solid var(--border-color);
-            padding: 10px 18px;
+        .btn {
+            background-color: var(--accent-red);
+            color: var(--text-white);
+            border: none;
+            padding: 12px 20px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
-            font-family: 'Kanit', sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            white-space: nowrap;
-            transition: all 0.2s;
+            transition: 0.2s;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
-        .day-tab.active {
-            background-color: var(--primary);
-            color: white;
-            border-color: var(--primary);
+        .btn:hover {
+            background-color: #d1121b;
+            box-shadow: 0 0 10px rgba(255, 30, 39, 0.5);
         }
 
-        .day-tab:hover:not(.active) {
-            background-color: #383838;
-            color: white;
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--text-white);
+            color: var(--text-white);
         }
 
-        /* รายละเอียดโปรแกรม */
-        .schedule-content {
-            background-color: #121212;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 25px;
+        .btn-outline:hover {
+            background-color: var(--text-white);
+            color: var(--bg-color);
         }
 
-        .schedule-content h2 {
-            margin-top: 0;
-            color: var(--primary);
-            font-size: 20px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+        .routine-card {
+            background: #262626;
+            border-left: 4px solid var(--accent-red);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
         }
 
-        .section-title {
-            font-weight: 600;
-            color: #ffffff;
-            margin-top: 15px;
-            margin-bottom: 8px;
-            font-size: 16px;
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
         }
 
-        ul {
-            margin: 0;
-            padding-left: 20px;
-            color: var(--text-muted);
-        }
-
-        li {
-            margin-bottom: 8px;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        /* เช็คลิสต์ประจำวัน */
-        .tracker-box {
-            background-color: #1a1a1a;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 20px;
-        }
-
-        .tracker-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #ffffff;
-        }
-
-        .checkbox-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 12px;
-        }
-
-        .checkbox-item {
+        .exercise-item {
             display: flex;
             align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .exercise-item input[type="checkbox"] {
+            accent-color: var(--accent-red);
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+
+        /* Timer Section */
+        .timer-box {
+            text-align: center;
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .timer-display {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--accent-red);
+            font-family: monospace;
+            margin: 10px 0;
+        }
+
+        .timer-controls {
+            display: flex;
             gap: 10px;
-            background-color: #262626;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            border: 1px solid transparent;
-            transition: 0.2s;
         }
 
-        .checkbox-item:hover {
-            border-color: var(--primary);
-        }
-
-        .checkbox-item input {
-            accent-color: var(--primary);
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        .checkbox-item span {
-            font-size: 13px;
-            color: #dddddd;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-            h1 {
-                font-size: 22px;
-            }
+        .timer-controls button {
+            flex: 1;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>โปรแกรมออกกำลังกายและควบคุมอาหารประจำสัปดาห์</h1>
-            <p class="subtitle">ออกแบบสำหรับเพศหญิง อายุ 14-15 ปี (ส่วนสูง 178 ซม. / น้ำหนัก 80 กก.)</p>
-        </header>
+<div class="container">
+    <h1>🔥 EASY FIT (RED EDITION)</h1>
+    <p class="subtitle">ง่ายๆ สั้นๆ ไม่ปวดเข่า ทำเองที่บ้าน</p>
 
-        <div class="info-card">
-            <strong>คำแนะนำสำคัญด้านความปลอดภัย:</strong>
-            <ul>
-                <li>โปรแกรมนี้ใช้ท่าออกกำลังกายประเภท Low Impact (ไร้แรงกระแทก) เพื่อป้องกันการบาดเจ็บที่ข้อต่อและหัวเข่า</li>
-                <li>ห้ามอดอาหารเด็ดขาด รับประทานอาหารให้ครบ 3 มื้อเพื่อการเจริญเติบโตที่สมบูรณ์</li>
-            </ul>
-        </div>
+    <!-- Interactive Button -->
+    <button class="btn" onclick="generateRandomWorkout()">🎲 สุ่มตารางออกกำลังกายวันนี้</button>
 
-        <!-- แถบเลือกวัน -->
-        <div class="day-tabs">
-            <button class="day-tab active" onclick="selectDay('mon', this)">วันจันทร์</button>
-            <button class="day-tab" onclick="selectDay('tue', this)">วันอังคาร</button>
-            <button class="day-tab" onclick="selectDay('wed', this)">วันพุธ</button>
-            <button class="day-tab" onclick="selectDay('thu', this)">วันพฤหัสบดี</button>
-            <button class="day-tab" onclick="selectDay('fri', this)">วันศุกร์</button>
-            <button class="day-tab" onclick="selectDay('sat', this)">วันเสาร์</button>
-            <button class="day-tab" onclick="selectDay('sun', this)">วันอาทิตย์</button>
-        </div>
-
-        <!-- รายละเอียดโปรแกรมประจำวัน -->
-        <div class="schedule-content" id="scheduleArea">
-            <h2>วันจันทร์: คาร์ดิโอไร้แรงกระแทก & กล้ามเนื้อแกนกลางลำตัว</h2>
-            <div class="section-title">การออกกำลังกาย (รวม 30 นาที)</div>
-            <ul>
-                <li><b>Warm-up (5 นาที):</b> หมุนข้อต่อ ยืดเหยียดกล้ามเนื้อแขนและขา</li>
-                <li><b>Cardio Low Impact (15 นาที):</b> ทำท่าละ 45 วินาที พัก 15 วินาที (ทำวน 3 รอบ)
-                    <br>- Step Touch (ก้าวแตะชิดสลับซ้าย-ขวา พร้อมแกว่งแขน)
-                    <br>- Marching in Place (เดินย่ำเท้าอยู่กับที่พร้อมแกว่งแขน)
-                    <br>- Wall Push-ups (ดันพื้นกับกำแพง)
-                </li>
-                <li><b>Core Workout (5 นาที):</b> Plank บนเข่า ค้างไว้ 20-30 วินาที จำนวน 3 เซต</li>
-                <li><b>Cool-down (5 นาที):</b> ยืดเหยียดกล้ามเนื้อทั่วร่างกาย</li>
-            </ul>
-            <div class="section-title">แนวทางโภชนาการ</div>
-            <ul>
-                <li><b>มื้อเช้า:</b> ข้าวต้มหมูสับใส่ไข่ + นมจืดรสกลมกล่อม/รสจืด 1 แก้ว</li>
-                <li><b>มื้อกลางวัน:</b> ข้าวราดแกง (ผัดผักใส่เนื้อไก่/หมูไม่ติดมัน)</li>
-                <li><b>มื้อเย็น:</b> เกี๊ยวน้ำ หรือสลัดอกไก่ (ใช้น้ำสลัดใส) + ผลไม้หวานน้อย</li>
-            </ul>
-        </div>
-
-        <!-- บันทึกเป้าหมายประจำวัน -->
-        <div class="tracker-box">
-            <div class="tracker-title">การติดตามพฤติกรรมประจำวัน</div>
-            <div class="checkbox-group">
-                <label class="checkbox-item">
-                    <input type="checkbox">
-                    <span>ดื่มน้ำเปล่า 1.5 - 2 ลิตร</span>
-                </label>
-                <label class="checkbox-item">
-                    <input type="checkbox">
-                    <span>ออกกำลังกายครบตามโปรแกรม</span>
-                </label>
-                <label class="checkbox-item">
-                    <input type="checkbox">
-                    <span>งดเครื่องดื่มชงหวานและของทอด</span>
-                </label>
-                <label class="checkbox-item">
-                    <input type="checkbox">
-                    <span>นอนหลับพักผ่อน 8 ชั่วโมงขึ้นไป</span>
-                </label>
-            </div>
-        </div>
+    <!-- Display Area -->
+    <div class="routine-card">
+        <h3 id="workout-title" style="margin-top: 0; color: var(--accent-red);">👇 กดปุ่มด้านบนเพื่อเริ่ม</h3>
+        <ul class="exercise-list" id="workout-list">
+            <li class="exercise-item" style="color: var(--text-gray);">ยังไม่ได้เลือกท่า...</li>
+        </ul>
     </div>
 
-    <script>
-        const scheduleData = {
-            mon: {
-                title: "วันจันทร์: คาร์ดิโอไร้แรงกระแทก & กล้ามเนื้อแกนกลางลำตัว",
-                workout: [
-                    "<b>Warm-up (5 นาที):</b> หมุนข้อต่อ ยืดเหยียดกล้ามเนื้อแขนและขา",
-                    "<b>Cardio Low Impact (15 นาที):</b> ทำท่าละ 45 วินาที พัก 15 วินาที (ทำวน 3 รอบ)<br>- Step Touch (ก้าวแตะชิดสลับซ้าย-ขวา พร้อมแกว่งแขน)<br>- Marching in Place (เดินย่ำเท้าอยู่กับที่พร้อมแกว่งแขน)<br>- Wall Push-ups (ดันพื้นกับกำแพง)",
-                    "<b>Core Workout (5 นาที):</b> Plank บนเข่า ค้างไว้ 20-30 วินาที จำนวน 3 เซต",
-                    "<b>Cool-down (5 นาที):</b> ยืดเหยียดกล้ามเนื้อทั่วร่างกาย"
-                ],
-                diet: [
-                    "<b>มื้อเช้า:</b> ข้าวต้มหมูสับใส่ไข่ + นมจืด 1 แก้ว",
-                    "<b>มื้อกลางวัน:</b> ข้าวราดแกง (เน้นผัดผัก ใส่เนื้อสัตว์ไม่ติดมัน)",
-                    "<b>มื้อเย็น:</b> เกี๊ยวน้ำ หรือสลัดอกไก่ (น้ำสลัดใส) + ผลไม้"
-                ]
-            },
-            tue: {
-                title: "วันอังคาร: พักการออกกำลังกายหนัก (Active Rest)",
-                workout: [
-                    "<b>การเคลื่อนไหวเบาๆ (20 นาที):</b> เดินเล่น ทำงานบ้าน หรือยืดเหยียดร่างกายผ่อนคลาย",
-                    "งดการออกกำลังกายที่ใช้น้ำหนักมาก เพื่อให้กล้ามเนื้อได้ฟื้นฟู"
-                ],
-                diet: [
-                    "<b>มื้อเช้า:</b> แซนด์วิชโฮลวีตไข่ต้ม/ไข่ดาว + น้ำเต้าหู้หวานน้อย",
-                    "<b>มื้อกลางวัน:</b> ข้าวกล้อง + ปลานึ่ง/ต้ม + แกงจืดจืด",
-                    "<b>มื้อเย็น:</b> ยำอกไก่ย่าง หรือส้มตำไทย (ไม่หวานจัด) + ข้าวเหนียวเล็กน้อย"
-                ]
-            },
-            wed: {
-                title: "วันพุธ: บริหารกล้ามเนื้อและสร้างความแข็งแรง",
-                workout: [
-                    "<b>Warm-up (5 นาที):</b> ยืดเหยียดแขน ขา และลำตัว",
-                    "<b>Bodyweight Low Impact (15 นาที):</b> ทำท่าละ 10-12 ครั้ง จำนวน 3 เซต<br>- Box Squat (นั่งย่อบนเก้าอี้แล้วลุกขึ้น เพื่อเซฟข้อเข่า)<br>- Glute Bridge (นอนยกสะโพกขึ้น)<br>- Standing Side Crunch (ยืนเอียงลำตัวแตะศอกกับเข่าด้านข้าง)",
-                    "<b>Cool-down (5 นาที):</b> ยืดเหยียดกล้ามเนื้อ"
-                ],
-                diet: [
-                    "<b>มื้อเช้า:</b> โจ๊กหมูใส่ไข่ + นมเปรี้ยวสูตรน้ำตาลน้อย",
-                    "<b>มื้อกลางวัน:</b> ข้าวผัดหมู/ไก่ (ใส่น้ำมันน้อย เน้นใส่ผัก)",
-                    "<b>มื้อเย็น:</b> ต้มยำไก่/กุ้ง น้ำใส + ข้าวสวย 1 ทัพพี"
-                ]
-            },
-            thu: {
-                title: "วันพฤหัสบดี: พักการออกกำลังกายหนัก (Active Rest)",
-                workout: [
-                    "<b>กิจกรรมผ่อนคลาย (15-20 นาที):</b> เดินเบาๆ ภายในบ้าน หรือฝึกโยคะยืดกล้ามเนื้อเบาๆ"
-                ],
-                diet: [
-                    "<b>มื้อเช้า:</b> ข้าวสวย + ไข่เจียว (ใช้น้ำมันน้อยหรือใช้หม้อทอดไร้น้ำมัน) + ผัดผัก",
-                    "<b>มื้อกลางวัน:</b> ก๋วยเตี๋ยวน้ำใส (เน้นเนื้อสัตว์ไม่ติดมัน ไม่ใส่กระเทียมเจียวมากเกินไป)",
-                    "<b>มื้อเย็น:</b> นมจืด 1 แก้ว + ขนมปังโฮลวีต 1-2 แผ่น"
-                ]
-            },
-            fri: {
-                title: "วันศุกร์: คาร์ดิโอรวมและยืดกล้ามเนื้อ",
-                workout: [
-                    "<b>Warm-up (5 นาที):</b> ยืดเหยียดเตรียมความพร้อม",
-                    "<b>Cardio & Strength (15 นาที):</b> ทำวน 3 รอบ<br>- Arm Circles & Side Steps (ก้าวสลับพร้อมควงแขน)<br>- Wall Sit (พิงกำแพงย่อขา 20 วินาที)<br>- Standing Knee Lift (ยืนยกเข่าขึ้นด้านหน้าแบบไม่กระโดด)",
-                    "<b>Cool-down (5 นาที):</b> ยืดเหยียดคลายกล้ามเนื้อ"
-                ],
-                diet: [
-                    "<b>มื้อเช้า:</b> ข้าวต้มปลา หรือซีเรียลโฮลเกรนคู่กับนมจืด",
-                    "<b>มื้อกลางวัน:</b> ข้าวกะเพราอกไก่ (ใช้น้ำมันน้อย/ไม่ใส่รสหวานจัด)",
-                    "<b>มื้อเย็น:</b> แกงเลียงกุ้งสด หรือแกงจืดเต้าหู้หมูสับ + ข้าวสวย"
-                ]
-            },
-            sat: {
-                title: "วันเสาร์: เคลื่อนไหวร่างกายแบบผ่อนคลาย",
-                workout: [
-                    "<b>กิจกรรมอิสระ (30 นาที):</b> ทำความสะอาดห้องพัก จัดบ้าน หรือเต้นตามจังหวะเพลงเบาๆ แบบไม่กระโดด"
-                ],
-                diet: [
-                    "<b>มื้อเช้า:</b> ข้าวเหนียวหมูปิ้ง (เลือกเนื้อล้วน ไม่ติดมัน) หรือไข่ต้ม 2 ฟอง",
-                    "<b>มื้อกลางวัน:</b> ข้าวหน้าไก่ย่าง (ไม่รับประทานหนังไก่)",
-                    "<b>มื้อเย็น:</b> สลัดโรลปูอัด/อกไก่ คู่กับน้ำเปล่า"
-                ]
-            },
-            sun: {
-                title: "วันอาทิตย์: พักผ่อนร่างกายประจำสัปดาห์ (Full Rest Day)",
-                workout: [
-                    "พักผ่อนเต็มที่ เพื่อให้ร่างกายและกล้ามเนื้อได้ซ่อมแซมส่วนที่สึกหรอ"
-                ],
-                diet: [
-                    "<b>มื้อเช้า:</b> แพนเค้กกล้วยหอม (ใช้แป้งโฮลวีต) + นมสด",
-                    "<b>มื้อกลางวัน:</b> สุกี้น้ำไก่หรือทะเล (ใส่ผักจำนวนมาก)",
-                    "<b>มื้อเย็น:</b> ปลานึ่ง หรือต้ม + ผักลวกและข้าวสวย"
-                ]
-            }
-        };
+    <!-- Timer Feature -->
+    <div class="timer-box">
+        <div style="font-size: 14px; color: var(--text-gray);">⏱️ นาฬิกาจับเวลา (45 วินาที)</div>
+        <div class="timer-display" id="timer">00:45</div>
+        <div class="timer-controls">
+            <button class="btn" onclick="startTimer()">เริ่ม</button>
+            <button class="btn btn-outline" onclick="resetTimer()">รีเซ็ต</button>
+        </div>
+    </div>
+</div>
 
-        function selectDay(dayKey, element) {
-            document.querySelectorAll('.day-tab').forEach(tab => tab.classList.remove('active'));
-            element.classList.add('active');
-
-            const data = scheduleData[dayKey];
-            const area = document.getElementById('scheduleArea');
-
-            let workoutHtml = data.workout.map(item => `<li>${item}</li>`).join('');
-            let dietHtml = data.diet.map(item => `<li>${item}</li>`).join('');
-
-            area.innerHTML = `
-                <h2>${data.title}</h2>
-                <div class="section-title">การออกกำลังกาย</div>
-                <ul>${workoutHtml}</ul>
-                <div class="section-title">แนวทางโภชนาการ</div>
-                <ul>${dietHtml}</ul>
-            `;
+<script>
+    // Easy & Knee-Friendly Exercises Pool
+    const workoutDatabase = [
+        {
+            title: "SET A: สลายไขมันแบบชิลๆ",
+            moves: ["ยืนย่ำอยู่กับที่ + แกว่งแขน (45 วินาที)", "Squat ย่อตัวครึ่งทาง (10 ครั้ง)", "คุกเข่าวิดพื้นกับโซฟา/เตียง (8 ครั้ง)", "เกร็งหน้าท้อง Plank (30 วินาที)"]
+        },
+        {
+            title: "SET B: เน้นกระชับต้นขา & ก้น",
+            moves: ["Glute Bridge นอนหงายยกสะโพก (12 ครั้ง)", "Standing Knee to Elbow ยืนยกเข่าแตะศอก (12 ครั้ง/ข้าง)", "Wall Sit พิงกำแพงย่อตัว (30 วินาที)", "เดินเร็วรอบห้อง (1 นาที)"]
+        },
+        {
+            title: "SET C: ลดพุง & กระชับหลัง",
+            moves: ["Bird-Dog ยืดแขนขาขนานพื้น (10 ครั้ง/ข้าง)", "ชูขวดน้ำขึ้นเหนือศีรษะ (15 ครั้ง)", "นอนคว่ำยกอก Superman (10 ครั้ง)", "ยืดเหยียดขาและหลัง (1 นาที)"]
         }
-    </script>
+    ];
+
+    let timerInterval = null;
+    let timeLeft = 45;
+
+    function generateRandomWorkout() {
+        const randomIndex = Math.floor(Math.random() * workoutDatabase.length);
+        const selected = workoutDatabase[randomIndex];
+
+        document.getElementById('workout-title').innerText = selected.title;
+        
+        const listElement = document.getElementById('workout-list');
+        listElement.innerHTML = '';
+
+        selected.moves.forEach(move => {
+            const li = document.createElement('li');
+            li.className = 'exercise-item';
+            li.innerHTML = `<input type="checkbox"> <span>${move}</span>`;
+            listElement.appendChild(li);
+        });
+        
+        resetTimer();
+    }
+
+    function startTimer() {
+        if (timerInterval) return; // Prevent multiple intervals
+        
+        timerInterval = setInterval(() => {
+            if (timeLeft > 0) {
+                timeLeft--;
+                updateTimerDisplay();
+            } else {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                alert("🎉 หมดเวลา! พักได้ 15 วินาที");
+            }
+        }, 1000);
+    }
+
+    function resetTimer() {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        timeLeft = 45;
+        updateTimerDisplay();
+    }
+
+    function updateTimerDisplay() {
+        const seconds = timeLeft < 10 ? '0' + timeLeft : timeLeft;
+        document.getElementById('timer').innerText = `00:${seconds}`;
+    }
+</script>
 
 </body>
 </html>
