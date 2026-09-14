@@ -3,233 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EASY WORKOUT - RED & BLACK EDITION</title>
+    <title>8-MIN EXPRESS WORKOUT</title>
     <style>
         :root {
-            --bg-color: #0d0d0d;
-            --card-bg: #1a1a1a;
-            --accent-red: #ff1e27;
+            --bg-black: #0a0a0a;
+            --card-gray: #161616;
+            --accent-red: #ff0000;
             --text-white: #ffffff;
-            --text-gray: #a0a0a0;
+            --text-muted: #888888;
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg-black);
             color: var(--text-white);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
+            align-items: center;
+            min-height: 90vh;
         }
 
         .container {
             width: 100%;
-            max-width: 480px;
-            background: var(--card-bg);
-            border: 2px solid var(--accent-red);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 0 20px rgba(255, 30, 39, 0.2);
+            max-width: 400px;
+            background: var(--card-gray);
+            border: 3px solid var(--accent-red);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+            text-align: center;
         }
 
         h1 {
-            text-align: center;
             color: var(--accent-red);
-            font-size: 24px;
-            margin-bottom: 5px;
+            font-size: 26px;
+            margin: 0 0 5px 0;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            font-weight: 900;
         }
 
-        p.subtitle {
-            text-align: center;
-            color: var(--text-gray);
+        .subtitle {
+            color: var(--text-muted);
             font-size: 14px;
-            margin-top: 0;
             margin-bottom: 20px;
+        }
+
+        .status-box {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .phase-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-white);
+            height: 25px;
+        }
+
+        .move-name {
+            font-size: 22px;
+            color: var(--accent-red);
+            font-weight: bold;
+            margin: 10px 0;
+            min-height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timer-display {
+            font-size: 64px;
+            font-weight: bold;
+            font-family: monospace;
+            color: var(--text-white);
+            margin: 10px 0;
+        }
+
+        .progress-text {
+            color: var(--text-muted);
+            font-size: 14px;
         }
 
         .btn {
             background-color: var(--accent-red);
             color: var(--text-white);
             border: none;
-            padding: 12px 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
             width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.2s;
-            margin-bottom: 10px;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+            transition: 0.2s;
         }
 
-        .btn:hover {
-            background-color: #d1121b;
-            box-shadow: 0 0 10px rgba(255, 30, 39, 0.5);
+        .btn:active {
+            transform: scale(0.98);
         }
 
-        .btn-outline {
+        .btn-reset {
             background-color: transparent;
-            border: 2px solid var(--text-white);
-            color: var(--text-white);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--text-white);
-            color: var(--bg-color);
-        }
-
-        .routine-card {
-            background: #262626;
-            border-left: 4px solid var(--accent-red);
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 20px;
-        }
-
-        .exercise-list {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0;
-        }
-
-        .exercise-item {
-            display: flex;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #333;
-        }
-
-        .exercise-item input[type="checkbox"] {
-            accent-color: var(--accent-red);
-            width: 20px;
-            height: 20px;
-            margin-right: 12px;
-            cursor: pointer;
-        }
-
-        /* Timer Section */
-        .timer-box {
-            text-align: center;
-            background: #000;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 20px;
-        }
-
-        .timer-display {
-            font-size: 48px;
-            font-weight: bold;
-            color: var(--accent-red);
-            font-family: monospace;
-            margin: 10px 0;
-        }
-
-        .timer-controls {
-            display: flex;
-            gap: 10px;
-        }
-
-        .timer-controls button {
-            flex: 1;
+            border: 2px solid #444;
+            color: var(--text-muted);
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🔥 EASY FIT (RED EDITION)</h1>
-    <p class="subtitle">ง่ายๆ สั้นๆ ไม่ปวดเข่า ทำเองที่บ้าน</p>
+    <h1>🔥 8-MIN EXPRESS</h1>
+    <div class="subtitle">วันละ 8 นาที | ทำ 30 วิ พัก 15 วิ (เซฟเข่า)</div>
 
-    <!-- Interactive Button -->
-    <button class="btn" onclick="generateRandomWorkout()">🎲 สุ่มตารางออกกำลังกายวันนี้</button>
-
-    <!-- Display Area -->
-    <div class="routine-card">
-        <h3 id="workout-title" style="margin-top: 0; color: var(--accent-red);">👇 กดปุ่มด้านบนเพื่อเริ่ม</h3>
-        <ul class="exercise-list" id="workout-list">
-            <li class="exercise-item" style="color: var(--text-gray);">ยังไม่ได้เลือกท่า...</li>
-        </ul>
+    <div class="status-box">
+        <div class="phase-title" id="phase">พร้อมยังมึง?</div>
+        <div class="move-name" id="move">กด START ด้านล่างเลย</div>
+        <div class="timer-display" id="timer">00:30</div>
+        <div class="progress-text" id="progress">ท่าที่ 0 / 8</div>
     </div>
 
-    <!-- Timer Feature -->
-    <div class="timer-box">
-        <div style="font-size: 14px; color: var(--text-gray);">⏱️ นาฬิกาจับเวลา (45 วินาที)</div>
-        <div class="timer-display" id="timer">00:45</div>
-        <div class="timer-controls">
-            <button class="btn" onclick="startTimer()">เริ่ม</button>
-            <button class="btn btn-outline" onclick="resetTimer()">รีเซ็ต</button>
-        </div>
-    </div>
+    <button class="btn" id="start-btn" onclick="toggleWorkout()">START WORKOUT</button>
+    <button class="btn btn-reset" onclick="resetWorkout()">RESET</button>
 </div>
 
 <script>
-    // Easy & Knee-Friendly Exercises Pool
-    const workoutDatabase = [
-        {
-            title: "SET A: สลายไขมันแบบชิลๆ",
-            moves: ["ยืนย่ำอยู่กับที่ + แกว่งแขน (45 วินาที)", "Squat ย่อตัวครึ่งทาง (10 ครั้ง)", "คุกเข่าวิดพื้นกับโซฟา/เตียง (8 ครั้ง)", "เกร็งหน้าท้อง Plank (30 วินาที)"]
-        },
-        {
-            title: "SET B: เน้นกระชับต้นขา & ก้น",
-            moves: ["Glute Bridge นอนหงายยกสะโพก (12 ครั้ง)", "Standing Knee to Elbow ยืนยกเข่าแตะศอก (12 ครั้ง/ข้าง)", "Wall Sit พิงกำแพงย่อตัว (30 วินาที)", "เดินเร็วรอบห้อง (1 นาที)"]
-        },
-        {
-            title: "SET C: ลดพุง & กระชับหลัง",
-            moves: ["Bird-Dog ยืดแขนขาขนานพื้น (10 ครั้ง/ข้าง)", "ชูขวดน้ำขึ้นเหนือศีรษะ (15 ครั้ง)", "นอนคว่ำยกอก Superman (10 ครั้ง)", "ยืดเหยียดขาและหลัง (1 นาที)"]
-        }
+    // 8 ท่า ทำง่ายๆ เซฟเข่า น้ำหนัก 80 เอาอยู่แน่นอน (ท่าละ 30 วิ + พัก 15 วิ = รวม ~6-8 นาที)
+    const workoutList = [
+        "1. เดินย่ำอยู่กับที่ + แกว่งแขน",
+        "2. Wall Sit (พิงกำแพงย่อตัว)",
+        "3. ยืนยกเข่าแตะศอกสลับข้าง",
+        "4. Glute Bridge (นอนยกสะโพก)",
+        "5. คุกเข่าวิดพื้น (กับเตียง/โซฟา)",
+        "6. Bird-Dog (คุกเข่ายืดแขนขา)",
+        "7. ชูขวดน้ำขึ้นเหนือศีรษะ",
+        "8. Plank เกร็งหน้าท้อง"
     ];
 
+    const WORK_TIME = 30;
+    const REST_TIME = 15;
+
+    let currentStep = 0;
+    let timeLeft = WORK_TIME;
+    let isWorking = true; // true = ออกกำลัง, false = พัก
     let timerInterval = null;
-    let timeLeft = 45;
+    let isRunning = false;
 
-    function generateRandomWorkout() {
-        const randomIndex = Math.floor(Math.random() * workoutDatabase.length);
-        const selected = workoutDatabase[randomIndex];
-
-        document.getElementById('workout-title').innerText = selected.title;
-        
-        const listElement = document.getElementById('workout-list');
-        listElement.innerHTML = '';
-
-        selected.moves.forEach(move => {
-            const li = document.createElement('li');
-            li.className = 'exercise-item';
-            li.innerHTML = `<input type="checkbox"> <span>${move}</span>`;
-            listElement.appendChild(li);
-        });
-        
-        resetTimer();
+    // Web Audio API สำหรับสร้างเสียง Beep โดยไม่ต้องโหลดไฟล์
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playBeep(freq = 440, type = 'sine', duration = 0.15) {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.value = freq;
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
+        osc.stop(audioCtx.currentTime + duration);
     }
 
-    function startTimer() {
-        if (timerInterval) return; // Prevent multiple intervals
-        
+    function toggleWorkout() {
+        if (isRunning) {
+            pauseWorkout();
+        } else {
+            startWorkout();
+        }
+    }
+
+    function startWorkout() {
+        isRunning = true;
+        document.getElementById('start-btn').innerText = "PAUSE";
+        document.getElementById('start-btn').style.backgroundColor = "#fff";
+        document.getElementById('start-btn').style.color = "#000";
+
+        if (currentStep >= workoutList.length) {
+            resetWorkout();
+            return;
+        }
+
+        updateUI();
+
         timerInterval = setInterval(() => {
-            if (timeLeft > 0) {
-                timeLeft--;
-                updateTimerDisplay();
-            } else {
-                clearInterval(timerInterval);
-                timerInterval = null;
-                alert("🎉 หมดเวลา! พักได้ 15 วินาที");
+            timeLeft--;
+            
+            // เสียงเตือน 3 วินาทีสุดท้าย
+            if (timeLeft <= 3 && timeLeft > 0) {
+                playBeep(440, 'sine', 0.1);
             }
+
+            if (timeLeft < 0) {
+                playBeep(880, 'square', 0.3); // เสียงหมดเวลา
+                if (isWorking) {
+                    // เปลี่ยนไปพัก
+                    isWorking = false;
+                    timeLeft = REST_TIME;
+                } else {
+                    // เปลี่ยนไปท่าถัดไป
+                    isWorking = true;
+                    currentStep++;
+                    timeLeft = WORK_TIME;
+
+                    if (currentStep >= workoutList.length) {
+                        completeWorkout();
+                        return;
+                    }
+                }
+            }
+            updateUI();
         }, 1000);
     }
 
-    function resetTimer() {
+    function pauseWorkout() {
+        isRunning = false;
         clearInterval(timerInterval);
-        timerInterval = null;
-        timeLeft = 45;
-        updateTimerDisplay();
+        document.getElementById('start-btn').innerText = "RESUME";
+        document.getElementById('start-btn').style.backgroundColor = "var(--accent-red)";
+        document.getElementById('start-btn').style.color = "#fff";
     }
 
-    function updateTimerDisplay() {
-        const seconds = timeLeft < 10 ? '0' + timeLeft : timeLeft;
-        document.getElementById('timer').innerText = `00:${seconds}`;
+    function resetWorkout() {
+        clearInterval(timerInterval);
+        isRunning = false;
+        currentStep = 0;
+        timeLeft = WORK_TIME;
+        isWorking = true;
+
+        document.getElementById('phase').innerText = "พร้อมยังมึง?";
+        document.getElementById('move').innerText = "กด START ด้านล่างเลย";
+        document.getElementById('timer').innerText = "00:30";
+        document.getElementById('progress').innerText = "ท่าที่ 0 / 8";
+        document.getElementById('start-btn').innerText = "START WORKOUT";
+        document.getElementById('start-btn').style.backgroundColor = "var(--accent-red)";
+        document.getElementById('start-btn').style.color = "#fff";
+    }
+
+    function completeWorkout() {
+        clearInterval(timerInterval);
+        isRunning = false;
+        document.getElementById('phase').innerText = "🎉 FINISH!";
+        document.getElementById('move').innerText = "เก่งมากมึง! จบ 8 นาทีแล้ว";
+        document.getElementById('timer').innerText = "00:00";
+        document.getElementById('progress').innerText = "ครบ 8 ท่าเรียบร้อย";
+        document.getElementById('start-btn').innerText = "PLAY AGAIN";
+    }
+
+    function updateUI() {
+        if (isWorking) {
+            document.getElementById('phase').innerText = "🔥 ลุย! (WORK)";
+            document.getElementById('phase').style.color = "var(--accent-red)";
+            document.getElementById('move').innerText = workoutList[currentStep];
+        } else {
+            document.getElementById('phase').innerText = "☕ พักแป๊บ (REST)";
+            document.getElementById('phase').style.color = "#00ff66";
+            document.getElementById('move').innerText = "ท่าต่อไป: " + workoutList[currentStep + 1];
+        }
+
+        const sec = timeLeft < 10 ? '0' + timeLeft : timeLeft;
+        document.getElementById('timer').innerText = `00:${sec}`;
+        document.getElementById('progress').innerText = `ท่าที่ ${currentStep + 1} / ${workoutList.length}`;
     }
 </script>
 
