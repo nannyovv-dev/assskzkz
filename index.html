@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8-MIN EASY WORKOUT v2</title>
+    <title>8-MIN EASY FIT ✨</title>
+    <!-- โหลดฟอนต์น่ารักๆ จาก Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-black: #0a0a0a;
-            --card-gray: #161616;
-            --accent-red: #ff0000;
+            --bg-black: #0f0f12;
+            --card-gray: #1a1a24;
+            --accent-red: #ff3344;
             --text-white: #ffffff;
-            --text-muted: #888888;
-            --green-rest: #00ff66;
+            --text-muted: #a0a0b0;
+            --green-success: #00e676;
             --yellow-prep: #ffcc00;
         }
 
         body {
             background-color: var(--bg-black);
             color: var(--text-white);
-            font-family: 'Arial', sans-serif;
+            font-family: 'Mitr', sans-serif;
             margin: 0;
             padding: 15px;
             display: flex;
@@ -29,73 +33,69 @@
 
         .container {
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
             background: var(--card-gray);
             border: 3px solid var(--accent-red);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+            border-radius: 28px;
+            padding: 24px;
+            box-shadow: 0 0 30px rgba(255, 51, 68, 0.3);
             text-align: center;
             box-sizing: border-box;
+            position: relative;
         }
 
         h1 {
             color: var(--accent-red);
-            font-size: 24px;
-            margin: 0 0 5px 0;
-            text-transform: uppercase;
-            font-weight: 900;
+            font-size: 26px;
+            margin: 0 0 4px 0;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .subtitle {
             color: var(--text-muted);
             font-size: 13px;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .status-box {
-            background: #000;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
+            background: #09090d;
+            border: 2px solid #2a2a3a;
+            border-radius: 20px;
+            padding: 18px;
+            margin-bottom: 18px;
         }
 
         .phase-title {
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 17px;
+            font-weight: 600;
             color: var(--text-white);
-            height: 22px;
         }
 
         .move-name {
             font-size: 20px;
             color: var(--accent-red);
-            font-weight: bold;
-            margin: 10px 0;
-            min-height: 50px;
+            font-weight: 700;
+            margin: 12px 0;
+            min-height: 52px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .timer-display {
-            font-size: 56px;
-            font-weight: bold;
-            font-family: monospace;
+            font-size: 60px;
+            font-weight: 700;
+            font-family: 'Mitr', monospace;
             color: var(--text-white);
-            margin: 5px 0;
+            margin: 0;
+            line-height: 1.1;
         }
 
         .progress-text {
             color: var(--text-muted);
-            font-size: 13px;
-        }
-
-        .btn-group-main {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
+            font-size: 14px;
+            margin-top: 8px;
         }
 
         .btn {
@@ -103,24 +103,26 @@
             color: var(--text-white);
             border: none;
             padding: 14px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Mitr', sans-serif;
+            border-radius: 16px;
             cursor: pointer;
             width: 100%;
-            text-transform: uppercase;
-            transition: 0.1s;
+            transition: transform 0.1s;
+            box-shadow: 0 4px 15px rgba(255, 51, 68, 0.4);
         }
 
         .btn:active { transform: scale(0.96); }
 
         .btn-nav {
-            background-color: #222;
-            border: 1px solid #444;
+            background-color: #252535;
+            border: 1px solid #3d3d55;
             color: #fff;
             padding: 10px;
-            font-size: 14px;
-            border-radius: 8px;
+            font-size: 13px;
+            font-family: 'Mitr', sans-serif;
+            border-radius: 12px;
             cursor: pointer;
             flex: 1;
         }
@@ -133,89 +135,103 @@
         .nav-group {
             display: flex;
             gap: 8px;
-            margin-bottom: 15px;
+            margin-top: 12px;
         }
 
-        /* Move Selector List */
-        .moves-list-box {
-            background: #111;
-            border-radius: 8px;
-            padding: 10px;
-            max-height: 140px;
-            overflow-y: auto;
-            text-align: left;
-            border: 1px solid #222;
+        /* Success Popup (ดี้ด้ามากกก) */
+        .success-overlay {
+            display: none;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 15, 18, 0.95);
+            border-radius: 26px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 10;
         }
 
-        .move-item {
-            font-size: 13px;
-            padding: 6px 10px;
-            border-radius: 4px;
-            color: #888;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
+        .check-icon {
+            font-size: 70px;
+            animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .move-item.active {
-            background: #2a0000;
-            color: #ff4d4d;
-            font-weight: bold;
+        @keyframes pop {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        .success-title {
+            color: var(--green-success);
+            font-size: 24px;
+            font-weight: 700;
+            margin: 10px 0 5px 0;
+        }
+
+        .success-desc {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🔥 8-MIN EASY WORKOUT</h1>
-    <div class="subtitle">ปรับเวลาตั้งตัว + กดข้ามท่าได้ตามใจ</div>
+    <h1>✨ 8-MIN EASY FIT ✨</h1>
+    <div class="subtitle">สั่นเตือน + ไม่งง + ฟอนต์น่ารักมินิมอล</div>
 
     <div class="status-box">
-        <div class="phase-title" id="phase">พร้อมเริ่มไหมมึง?</div>
-        <div class="move-name" id="move">กด START ด้านล่างเลย</div>
+        <div class="phase-title" id="phase">พร้อมลุยยังมึง? 💖</div>
+        <div class="move-name" id="move">กด START ด้านล่างได้เลย!</div>
         <div class="timer-display" id="timer">00:30</div>
         <div class="progress-text" id="progress">ท่าที่ 1 / 8</div>
     </div>
 
-    <!-- Main Control Buttons -->
-    <div class="btn-group-main">
-        <button class="btn" id="start-btn" onclick="toggleWorkout()">START WORKOUT</button>
-    </div>
+    <!-- Main Start Button -->
+    <button class="btn" id="start-btn" onclick="toggleWorkout()">START WORKOUT 🚀</button>
 
-    <!-- Skip / Navigation Buttons -->
+    <!-- Navigation Buttons (ย้อนกลับ / ข้าม) -->
     <div class="nav-group">
         <button class="btn-nav" id="prev-btn" onclick="prevStep()">⏮️ ย้อนกลับ</button>
-        <button class="btn-nav" onclick="resetCurrentTimer()">🔄 เริ่มเวลานับใหม่</button>
+        <button class="btn-nav" onclick="resetCurrentTimer()">🔄 เริ่มนับใหม่</button>
         <button class="btn-nav" id="next-btn" onclick="nextStep()">ข้ามท่า ⏭️</button>
     </div>
 
-    <!-- Move List Selector -->
-    <div class="moves-list-box" id="moves-container"></div>
+    <!-- Popup ดี้ด้า ตอนทำสำเร็จแต่ละท่า -->
+    <div class="success-overlay" id="success-popup">
+        <div class="check-icon">✅</div>
+        <div class="success-title">เก่งมากมึง! สำเร็จแล้ว!</div>
+        <div class="success-desc" id="completed-move-name">จบท่าที่ 1 เรียบร้อย 🎉</div>
+        <button class="btn" style="background: var(--green-success); color: #000;" onclick="closeSuccessPopup()">ไปท่าต่อไปเลยมึง! 🚀</button>
+    </div>
 </div>
 
 <script>
     const workoutList = [
-        "1. เดินย่ำอยู่กับที่ + แกว่งแขน",
-        "2. Wall Sit (พิงกำแพงย่อตัว)",
-        "3. ยืนยกเข่าแตะศอกสลับข้าง",
-        "4. Glute Bridge (นอนยกสะโพก)",
-        "5. คุกเข่าวิดพื้น (กับเตียง/โซฟา)",
-        "6. Bird-Dog (คุกเข่ายืดแขนขา)",
-        "7. ชูขวดน้ำขึ้นเหนือศีรษะ",
-        "8. Plank เกร็งหน้าท้อง"
+        "1. เดินย่ำอยู่กับที่ + แกว่งแขน 🚶‍♀️",
+        "2. Wall Sit (พิงกำแพงย่อตัว) 🧱",
+        "3. ยืนยกเข่าแตะศอกสลับข้าง 🦵",
+        "4. Glute Bridge (นอนยกสะโพก) 🍑",
+        "5. Knee Push-ups (คุกเข่าวิดพื้น) 🐾",
+        "6. Bird-Dog (คุกเข่ายืดแขนขา) 🐶",
+        "7. ชูขวดน้ำขึ้นเหนือศีรษะ 🍾",
+        "8. Plank (ซุกหมอนเกร็งหน้าท้อง) 🧘‍♀️"
     ];
 
     const WORK_TIME = 30;
     const REST_TIME = 15;
-    const PREP_TIME = 10; // เวลาเตรียมตัวก่อนเริ่มท่าใหม่
+    const PREP_TIME = 10;
 
     let currentStep = 0;
     let timeLeft = WORK_TIME;
-    let currentPhase = 'IDLE'; // IDLE, PREP, WORK, REST
+    let currentPhase = 'IDLE'; // IDLE, PREP, WORK, REST, PAUSED
     let timerInterval = null;
 
+    // ระบบเสียง
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    function playBeep(freq = 440, type = 'sine', duration = 0.15) {
+    function playSound(freq, type, duration) {
         if (audioCtx.state === 'suspended') audioCtx.resume();
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
@@ -228,16 +244,11 @@
         osc.stop(audioCtx.currentTime + duration);
     }
 
-    function initList() {
-        const container = document.getElementById('moves-container');
-        container.innerHTML = '';
-        workoutList.forEach((move, idx) => {
-            const div = document.createElement('div');
-            div.className = `move-item ${idx === currentStep ? 'active' : ''}`;
-            div.innerText = move;
-            div.onclick = () => selectStep(idx);
-            container.appendChild(div);
-        });
+    // ระบบสั่นมือถือ
+    function triggerVibrate() {
+        if ("vibrate" in navigator) {
+            navigator.vibrate([300, 100, 300, 100, 400]); // สั่น 3 จังหวะสะใจๆ
+        }
     }
 
     function toggleWorkout() {
@@ -256,7 +267,7 @@
             currentPhase = window.lastPhase || 'WORK';
         }
 
-        document.getElementById('start-btn').innerText = "PAUSE";
+        document.getElementById('start-btn').innerText = "PAUSE ⏸️";
         document.getElementById('start-btn').style.backgroundColor = "#fff";
         document.getElementById('start-btn').style.color = "#000";
 
@@ -266,19 +277,24 @@
         timerInterval = setInterval(() => {
             timeLeft--;
 
+            // เสียงบี๊บ 3 วินาทีสุดท้าย
             if (timeLeft <= 3 && timeLeft > 0) {
-                playBeep(440, 'sine', 0.1);
+                playSound(523.25, 'sine', 0.15); // เสียง C5
             }
 
             if (timeLeft < 0) {
-                playBeep(880, 'square', 0.3);
-                
+                // หมดเวลา! สั่น + ส่งเสียงยาว
+                triggerVibrate();
+                playSound(880, 'square', 0.4);
+
                 if (currentPhase === 'PREP') {
                     currentPhase = 'WORK';
                     timeLeft = WORK_TIME;
                 } else if (currentPhase === 'WORK') {
-                    currentPhase = 'REST';
-                    timeLeft = REST_TIME;
+                    // จบท่าออกกำลัง -> เด้ง Popup ดี้ด้า
+                    pauseWorkout();
+                    showSuccessPopup();
+                    return;
                 } else if (currentPhase === 'REST') {
                     if (currentStep < workoutList.length - 1) {
                         currentStep++;
@@ -294,11 +310,23 @@
         }, 1000);
     }
 
+    function showSuccessPopup() {
+        document.getElementById('completed-move-name').innerText = `ทำ "${workoutList[currentStep]}" เสร็จแล้ว! ✨`;
+        document.getElementById('success-popup').style.display = 'flex';
+    }
+
+    function closeSuccessPopup() {
+        document.getElementById('success-popup').style.display = 'none';
+        currentPhase = 'REST';
+        timeLeft = REST_TIME;
+        startWorkout();
+    }
+
     function pauseWorkout() {
         window.lastPhase = currentPhase;
         currentPhase = 'PAUSED';
         clearInterval(timerInterval);
-        document.getElementById('start-btn').innerText = "RESUME";
+        document.getElementById('start-btn').innerText = "RESUME ▶️";
         document.getElementById('start-btn').style.backgroundColor = "var(--accent-red)";
         document.getElementById('start-btn').style.color = "#fff";
         updateUI();
@@ -318,11 +346,6 @@
         }
     }
 
-    function selectStep(idx) {
-        currentStep = idx;
-        resetToPrep();
-    }
-
     function resetCurrentTimer() {
         resetToPrep();
     }
@@ -331,7 +354,8 @@
         clearInterval(timerInterval);
         currentPhase = 'PREP';
         timeLeft = PREP_TIME;
-        if (document.getElementById('start-btn').innerText === "PAUSE") {
+        document.getElementById('success-popup').style.display = 'none';
+        if (document.getElementById('start-btn').innerText.includes("PAUSE")) {
             startWorkout();
         } else {
             updateUI();
@@ -343,13 +367,12 @@
         currentPhase = 'IDLE';
         document.getElementById('phase').innerText = "🎉 FINISH!";
         document.getElementById('phase').style.color = "var(--accent-red)";
-        document.getElementById('move').innerText = "สุดยอดมึง! ออกกำลังกายครบแล้ว";
+        document.getElementById('move').innerText = "เก่งมากมึง! วันนี้ทำครบ 8 ท่าแล้ว 💖";
         document.getElementById('timer').innerText = "00:00";
-        document.getElementById('start-btn').innerText = "PLAY AGAIN";
+        document.getElementById('start-btn').innerText = "PLAY AGAIN 🔄";
         document.getElementById('start-btn').style.backgroundColor = "var(--accent-red)";
         document.getElementById('start-btn').style.color = "#fff";
         currentStep = 0;
-        initList();
     }
 
     function updateUI() {
@@ -365,9 +388,9 @@
             phaseElem.style.color = "var(--accent-red)";
             moveElem.innerText = workoutList[currentStep];
         } else if (currentPhase === 'REST') {
-            phaseElem.innerText = "☕ พักแป๊บ (REST)";
-            phaseElem.style.color = "var(--green-rest)";
-            moveElem.innerText = "ท่าต่อไป: " + workoutList[currentStep + 1];
+            phaseElem.innerText = "☕ พัก หายใจลึกๆ (REST)";
+            phaseElem.style.color = "var(--green-success)";
+            moveElem.innerText = "ท่าต่อไป: " + (workoutList[currentStep + 1] || "ท่าสุดท้ายแล้ว!");
         } else if (currentPhase === 'PAUSED') {
             phaseElem.innerText = "⏸️ หยุดชั่วคราว";
             phaseElem.style.color = "#fff";
@@ -379,11 +402,9 @@
 
         document.getElementById('prev-btn').disabled = (currentStep === 0);
         document.getElementById('next-btn').disabled = (currentStep === workoutList.length - 1);
-
-        initList();
     }
 
-    initList();
+    updateUI();
 </script>
 
 </body>
