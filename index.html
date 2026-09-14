@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ตารางฟิตหุ่นสุขภาพดี - ฉบับวัยรุ่น</title>
+    <title>โปรแกรมลดน้ำหนักและดูแลสุขภาพ (Low Impact)</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #0f0f0f;
             --card-bg: #1a1a1a;
-            --primary: #ff1e38;
-            --primary-hover: #d9142d;
+            --primary: #d90429;
+            --primary-hover: #ef233c;
             --text-main: #ffffff;
             --text-muted: #b0b0b0;
             --border-color: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
@@ -33,60 +37,44 @@
             max-width: 850px;
             background-color: var(--card-bg);
             border: 2px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 30px;
-            box-shadow: 0 15px 35px rgba(255, 30, 56, 0.15);
+            box-shadow: 0 10px 30px rgba(217, 4, 41, 0.2);
         }
 
         header {
             text-align: center;
             margin-bottom: 25px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 15px;
         }
 
         h1 {
             color: var(--primary);
-            font-size: 28px;
-            margin-bottom: 5px;
+            font-size: 26px;
+            margin: 0 0 8px 0;
             font-weight: 700;
         }
 
         .subtitle {
             color: var(--text-muted);
             font-size: 14px;
-        }
-
-        /* ส่วนคำคมสร้างแรงบันดาลใจ */
-        .quote-box {
-            background-color: #000000;
-            border-left: 4px solid var(--primary);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .quote-text {
-            font-size: 15px;
-            color: #ffffff;
             margin: 0;
         }
 
-        .btn-quote {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Kanit', sans-serif;
-            font-size: 13px;
-            transition: 0.2s;
+        .info-card {
+            background-color: #000000;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #d1d1d1;
         }
 
-        .btn-quote:hover {
-            background-color: var(--primary-hover);
+        .info-card ul {
+            margin: 5px 0 0 0;
+            padding-left: 20px;
         }
 
         /* แถบเลือกวัน */
@@ -103,7 +91,7 @@
             color: var(--text-muted);
             border: 1px solid var(--border-color);
             padding: 10px 18px;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
             font-family: 'Kanit', sans-serif;
             font-size: 14px;
@@ -116,7 +104,6 @@
             background-color: var(--primary);
             color: white;
             border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(255, 30, 56, 0.4);
         }
 
         .day-tab:hover:not(.active) {
@@ -124,11 +111,11 @@
             color: white;
         }
 
-        /* เนื้อหาตารางรายวัน */
+        /* รายละเอียดโปรแกรม */
         .schedule-content {
             background-color: #121212;
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 20px;
             margin-bottom: 25px;
         }
@@ -145,10 +132,8 @@
             font-weight: 600;
             color: #ffffff;
             margin-top: 15px;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 16px;
         }
 
         ul {
@@ -158,15 +143,16 @@
         }
 
         li {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-size: 14px;
+            line-height: 1.5;
         }
 
-        /* เช็คลิสต์กิจกรรมประจำวัน */
+        /* เช็คลิสต์ประจำวัน */
         .tracker-box {
             background-color: #1a1a1a;
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 20px;
         }
 
@@ -179,7 +165,7 @@
 
         .checkbox-group {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 12px;
         }
 
@@ -225,65 +211,70 @@
 
     <div class="container">
         <header>
-            <h1>🔥 ตารางปั้นหุ่นสวย สุขภาพดี 🔥</h1>
-            <p class="subtitle">สำหรับเด็กอายุ 14-15 ปี (สูง 178 ซม. / น้ำหนัก 80 กก.) • ทำได้ที่บ้าน ไม่หักโหม</p>
+            <h1>โปรแกรมออกกำลังกายและควบคุมอาหารประจำสัปดาห์</h1>
+            <p class="subtitle">ออกแบบสำหรับเพศหญิง อายุ 14-15 ปี (ส่วนสูง 178 ซม. / น้ำหนัก 80 กก.)</p>
         </header>
 
-        <!-- กล่องคำคม -->
-        <div class="quote-box">
-            <p class="quote-text" id="quoteDisplay">"ความพยายามไม่เคยทำร้ายใคร ค่อยๆ ทำทีละนิดเพื่อตัวเราเองนะ!"</p>
-            <button class="btn-quote" onclick="changeQuote()">สุ่มคำคม</button>
+        <div class="info-card">
+            <strong>คำแนะนำสำคัญด้านความปลอดภัย:</strong>
+            <ul>
+                <li>โปรแกรมนี้ใช้ท่าออกกำลังกายประเภท Low Impact (ไร้แรงกระแทก) เพื่อป้องกันการบาดเจ็บที่ข้อต่อและหัวเข่า</li>
+                <li>ห้ามอดอาหารเด็ดขาด รับประทานอาหารให้ครบ 3 มื้อเพื่อการเจริญเติบโตที่สมบูรณ์</li>
+            </ul>
         </div>
 
-        <!-- ปุ่มกดเลือกวัน -->
+        <!-- แถบเลือกวัน -->
         <div class="day-tabs">
-            <button class="day-tab active" onclick="selectDay('mon', this)">จันทร์</button>
-            <button class="day-tab" onclick="selectDay('tue', this)">อังคาร</button>
-            <button class="day-tab" onclick="selectDay('wed', this)">พุธ</button>
-            <button class="day-tab" onclick="selectDay('thu', this)">พฤหัสบดี</button>
-            <button class="day-tab" onclick="selectDay('fri', this)">ศุกร์</button>
-            <button class="day-tab" onclick="selectDay('sat', this)">เสาร์</button>
-            <button class="day-tab" onclick="selectDay('sun', this)">อาทิตย์</button>
+            <button class="day-tab active" onclick="selectDay('mon', this)">วันจันทร์</button>
+            <button class="day-tab" onclick="selectDay('tue', this)">วันอังคาร</button>
+            <button class="day-tab" onclick="selectDay('wed', this)">วันพุธ</button>
+            <button class="day-tab" onclick="selectDay('thu', this)">วันพฤหัสบดี</button>
+            <button class="day-tab" onclick="selectDay('fri', this)">วันศุกร์</button>
+            <button class="day-tab" onclick="selectDay('sat', this)">วันเสาร์</button>
+            <button class="day-tab" onclick="selectDay('sun', this)">วันอาทิตย์</button>
         </div>
 
-        <!-- แสดงเนื้อหาตามวัน -->
+        <!-- รายละเอียดโปรแกรมประจำวัน -->
         <div class="schedule-content" id="scheduleArea">
-            <!-- ข้อมูลเริ่มต้น (วันจันทร์) -->
-            <h2>📅 วันจันทร์: เริ่มต้นสัปดาห์ด้วยความสดใส</h2>
-            <div class="section-title">⚡ กิจกรรมการออกกำลังกาย</div>
+            <h2>วันจันทร์: คาร์ดิโอไร้แรงกระแทก & กล้ามเนื้อแกนกลางลำตัว</h2>
+            <div class="section-title">การออกกำลังกาย (รวม 30 นาที)</div>
             <ul>
-                <li>Warm-up ยืดเหยียดกล้ามเนื้อ (5 นาที)</li>
-                <li>Cardio: กระโดดตบ / สควอท ท่าละ 45 วินาที พัก 15 วินาที ทำวน 3 รอบ (15 นาที)</li>
-                <li>Core: แพงค์ค้างไว้ 30 วินาที จำนวน 3 เซต (10 นาที)</li>
-                <li>Cool-down ยืดคลายกล้ามเนื้อ (5 นาที)</li>
+                <li><b>Warm-up (5 นาที):</b> หมุนข้อต่อ ยืดเหยียดกล้ามเนื้อแขนและขา</li>
+                <li><b>Cardio Low Impact (15 นาที):</b> ทำท่าละ 45 วินาที พัก 15 วินาที (ทำวน 3 รอบ)
+                    <br>- Step Touch (ก้าวแตะชิดสลับซ้าย-ขวา พร้อมแกว่งแขน)
+                    <br>- Marching in Place (เดินย่ำเท้าอยู่กับที่พร้อมแกว่งแขน)
+                    <br>- Wall Push-ups (ดันพื้นกับกำแพง)
+                </li>
+                <li><b>Core Workout (5 นาที):</b> Plank บนเข่า ค้างไว้ 20-30 วินาที จำนวน 3 เซต</li>
+                <li><b>Cool-down (5 นาที):</b> ยืดเหยียดกล้ามเนื้อทั่วร่างกาย</li>
             </ul>
-            <div class="section-title">🥗 แนวทางการกินอาหาร</div>
+            <div class="section-title">แนวทางโภชนาการ</div>
             <ul>
-                <li><b>มื้อเช้า:</b> ข้าวต้มหมูสับ หรือไข่กระทะ + นมจืด</li>
-                <li><b>มื้อกลางวัน:</b> ข้าวราดแกง (เน้นผัดผัก ไก่ หรือปลา ไม่ทอด)</li>
-                <li><b>มื้อเย็น:</b> เกี๊ยวน้ำ หรือสลัดอกไก่ + ผลไม้สด</li>
+                <li><b>มื้อเช้า:</b> ข้าวต้มหมูสับใส่ไข่ + นมจืดรสกลมกล่อม/รสจืด 1 แก้ว</li>
+                <li><b>มื้อกลางวัน:</b> ข้าวราดแกง (ผัดผักใส่เนื้อไก่/หมูไม่ติดมัน)</li>
+                <li><b>มื้อเย็น:</b> เกี๊ยวน้ำ หรือสลัดอกไก่ (ใช้น้ำสลัดใส) + ผลไม้หวานน้อย</li>
             </ul>
         </div>
 
-        <!-- เช็คลิสต์ภารกิจประจำวัน -->
+        <!-- บันทึกเป้าหมายประจำวัน -->
         <div class="tracker-box">
-            <div class="tracker-title">✨ เช็คลิสต์พิชิตเป้าหมายวันนี้</div>
+            <div class="tracker-title">การติดตามพฤติกรรมประจำวัน</div>
             <div class="checkbox-group">
                 <label class="checkbox-item">
                     <input type="checkbox">
-                    <span>ดื่มน้ำเปล่าครบ 1.5 - 2 ลิตร</span>
+                    <span>ดื่มน้ำเปล่า 1.5 - 2 ลิตร</span>
                 </label>
                 <label class="checkbox-item">
                     <input type="checkbox">
-                    <span>ออกกำลังกายตามตารางครบถ้วน</span>
+                    <span>ออกกำลังกายครบตามโปรแกรม</span>
                 </label>
                 <label class="checkbox-item">
                     <input type="checkbox">
-                    <span>งดน้ำหวานและขนมกรุบกรอบ</span>
+                    <span>งดเครื่องดื่มชงหวานและของทอด</span>
                 </label>
                 <label class="checkbox-item">
                     <input type="checkbox">
-                    <span>นอนหลับพักผ่อนเกิน 8 ชั่วโมง</span>
+                    <span>นอนหลับพักผ่อน 8 ชั่วโมงขึ้นไป</span>
                 </label>
             </div>
         </div>
@@ -292,106 +283,96 @@
     <script>
         const scheduleData = {
             mon: {
-                title: "📅 วันจันทร์: เริ่มต้นสัปดาห์ด้วยความสดใส",
+                title: "วันจันทร์: คาร์ดิโอไร้แรงกระแทก & กล้ามเนื้อแกนกลางลำตัว",
                 workout: [
-                    "Warm-up ยืดเหยียดกล้ามเนื้อ (5 นาที)",
-                    "Cardio: กระโดดตบ / สควอท ท่าละ 45 วินาที พัก 15 วินาที ทำวน 3 รอบ (15 นาที)",
-                    "Core: แพงค์ค้างไว้ 30 วินาที จำนวน 3 เซต (10 นาที)",
-                    "Cool-down ยืดคลายกล้ามเนื้อ (5 นาที)"
+                    "<b>Warm-up (5 นาที):</b> หมุนข้อต่อ ยืดเหยียดกล้ามเนื้อแขนและขา",
+                    "<b>Cardio Low Impact (15 นาที):</b> ทำท่าละ 45 วินาที พัก 15 วินาที (ทำวน 3 รอบ)<br>- Step Touch (ก้าวแตะชิดสลับซ้าย-ขวา พร้อมแกว่งแขน)<br>- Marching in Place (เดินย่ำเท้าอยู่กับที่พร้อมแกว่งแขน)<br>- Wall Push-ups (ดันพื้นกับกำแพง)",
+                    "<b>Core Workout (5 นาที):</b> Plank บนเข่า ค้างไว้ 20-30 วินาที จำนวน 3 เซต",
+                    "<b>Cool-down (5 นาที):</b> ยืดเหยียดกล้ามเนื้อทั่วร่างกาย"
                 ],
                 diet: [
-                    "<b>มื้อเช้า:</b> ข้าวต้มหมูสับ หรือไข่กระทะ + นมจืด",
-                    "<b>มื้อกลางวัน:</b> ข้าวราดแกง (เน้นผัดผัก ไก่ หรือปลา ไม่ทอด)",
-                    "<b>มื้อเย็น:</b> เกี๊ยวน้ำ หรือสลัดอกไก่ + ผลไม้สด"
+                    "<b>มื้อเช้า:</b> ข้าวต้มหมูสับใส่ไข่ + นมจืด 1 แก้ว",
+                    "<b>มื้อกลางวัน:</b> ข้าวราดแกง (เน้นผัดผัก ใส่เนื้อสัตว์ไม่ติดมัน)",
+                    "<b>มื้อเย็น:</b> เกี๊ยวน้ำ หรือสลัดอกไก่ (น้ำสลัดใส) + ผลไม้"
                 ]
             },
             tue: {
-                title: "📅 วันอังคาร: วันพักผ่อนสบายๆ",
+                title: "วันอังคาร: พักการออกกำลังกายหนัก (Active Rest)",
                 workout: [
-                    "พักผ่อนจากการออกกำลังกายหนัก",
-                    "พาสุนัขเดินเล่น หรือทำงานบ้านเบาๆ (กวาดบ้าน ถูบ้าน) 15-20 นาที"
+                    "<b>การเคลื่อนไหวเบาๆ (20 นาที):</b> เดินเล่น ทำงานบ้าน หรือยืดเหยียดร่างกายผ่อนคลาย",
+                    "งดการออกกำลังกายที่ใช้น้ำหนักมาก เพื่อให้กล้ามเนื้อได้ฟื้นฟู"
                 ],
                 diet: [
-                    "<b>มื้อเช้า:</b> แซนด์วิชโฮลวีตไข่ดาว + น้ำเต้าหู้ (หวานน้อย)",
-                    "<b>มื้อกลางวัน:</b> ข้าวกล้องกับปลาทอด/นึ่ง + แกงจืด",
-                    "<b>มื้อเย็น:</b> ยำอกไก่ย่าง หรือส้มตำไทย (ไม่ใส่ชูรสและไม่หวานจัด)"
+                    "<b>มื้อเช้า:</b> แซนด์วิชโฮลวีตไข่ต้ม/ไข่ดาว + น้ำเต้าหู้หวานน้อย",
+                    "<b>มื้อกลางวัน:</b> ข้าวกล้อง + ปลานึ่ง/ต้ม + แกงจืดจืด",
+                    "<b>มื้อเย็น:</b> ยำอกไก่ย่าง หรือส้มตำไทย (ไม่หวานจัด) + ข้าวเหนียวเล็กน้อย"
                 ]
             },
             wed: {
-                title: "📅 วันพุธ: เคลื่อนไหวร่างกายกลางสัปดาห์",
+                title: "วันพุธ: บริหารกล้ามเนื้อและสร้างความแข็งแรง",
                 workout: [
-                    "Warm-up ยืดเหยียด (5 นาที)",
-                    "Cardio: ทำท่าบอดี้เวทเบาๆ ต่อเนื่อง เช่น ลุกนั่ง สลับก้าวขา (20 นาที)",
-                    "Cool-down ยืดกล้ามเนื้อหลังออกกำลังกาย (5 นาที)"
+                    "<b>Warm-up (5 นาที):</b> ยืดเหยียดแขน ขา และลำตัว",
+                    "<b>Bodyweight Low Impact (15 นาที):</b> ทำท่าละ 10-12 ครั้ง จำนวน 3 เซต<br>- Box Squat (นั่งย่อบนเก้าอี้แล้วลุกขึ้น เพื่อเซฟข้อเข่า)<br>- Glute Bridge (นอนยกสะโพกขึ้น)<br>- Standing Side Crunch (ยืนเอียงลำตัวแตะศอกกับเข่าด้านข้าง)",
+                    "<b>Cool-down (5 นาที):</b> ยืดเหยียดกล้ามเนื้อ"
                 ],
                 diet: [
                     "<b>มื้อเช้า:</b> โจ๊กหมูใส่ไข่ + นมเปรี้ยวสูตรน้ำตาลน้อย",
-                    "<b>มื้อกลางวัน:</b> ข้าวผัดหมูหรือไก่ (ใส่ผักเยอะๆ)",
-                    "<b>มื้อเย็น:</b> ต้มยำน้ำใส + ข้าวสวยครึ่งทัพพี"
+                    "<b>มื้อกลางวัน:</b> ข้าวผัดหมู/ไก่ (ใส่น้ำมันน้อย เน้นใส่ผัก)",
+                    "<b>มื้อเย็น:</b> ต้มยำไก่/กุ้ง น้ำใส + ข้าวสวย 1 ทัพพี"
                 ]
             },
             thu: {
-                title: "📅 วันพฤหัสบดี: วันเบาๆ เน้นขยับตัว",
+                title: "วันพฤหัสบดี: พักการออกกำลังกายหนัก (Active Rest)",
                 workout: [
-                    "พักผ่อน / เดินเล่นรอบบ้าน หรือยืดเหยียดผ่อนคลายกล้ามเนื้อ (15-20 นาที)"
+                    "<b>กิจกรรมผ่อนคลาย (15-20 นาที):</b> เดินเบาๆ ภายในบ้าน หรือฝึกโยคะยืดกล้ามเนื้อเบาๆ"
                 ],
                 diet: [
-                    "<b>มื้อเช้า:</b> ข้าวสวย + ไข่เจียวอบหม้อทอดไร้น้ำมัน + ผักบุ้งไฟแดง",
-                    "<b>มื้อกลางวัน:</b> บะหมี่น้ำใส (ปรุงรสน้อย)",
-                    "<b>มื้อเย็น:</b> นมจืด 1 แก้ว + ขนมปังโฮลวีตทาเนยถั่ว"
+                    "<b>มื้อเช้า:</b> ข้าวสวย + ไข่เจียว (ใช้น้ำมันน้อยหรือใช้หม้อทอดไร้น้ำมัน) + ผัดผัก",
+                    "<b>มื้อกลางวัน:</b> ก๋วยเตี๋ยวน้ำใส (เน้นเนื้อสัตว์ไม่ติดมัน ไม่ใส่กระเทียมเจียวมากเกินไป)",
+                    "<b>มื้อเย็น:</b> นมจืด 1 แก้ว + ขนมปังโฮลวีต 1-2 แผ่น"
                 ]
             },
             fri: {
-                title: "📅 วันศุกร์: โค้งสุดท้ายก่อนวันหยุด",
+                title: "วันศุกร์: คาร์ดิโอรวมและยืดกล้ามเนื้อ",
                 workout: [
-                    "Warm-up (5 นาที)",
-                    "Cardio & Core: สลับท่าสควอท แพงค์ และวิ่งยกเข่าสูงอยู่กับที่ (25 นาที)",
-                    "Cool-down ยืดเหยียดกล้ามเนื้อ (5 นาที)"
+                    "<b>Warm-up (5 นาที):</b> ยืดเหยียดเตรียมความพร้อม",
+                    "<b>Cardio & Strength (15 นาที):</b> ทำวน 3 รอบ<br>- Arm Circles & Side Steps (ก้าวสลับพร้อมควงแขน)<br>- Wall Sit (พิงกำแพงย่อขา 20 วินาที)<br>- Standing Knee Lift (ยืนยกเข่าขึ้นด้านหน้าแบบไม่กระโดด)",
+                    "<b>Cool-down (5 นาที):</b> ยืดเหยียดคลายกล้ามเนื้อ"
                 ],
                 diet: [
-                    "<b>มื้อเช้า:</b> ข้าวต้มปลา หรือซีเรียลโฮลกรีนกับนมจืด",
-                    "<b>มื้อกลางวัน:</b> ข้าวกะเพราอกไก่ (สั่งน้ำมันน้อย / ไม่หวาน)",
-                    "<b>มื้อเย็น:</b> แกงเลียงกุ้งสด + ข้าวสวย"
+                    "<b>มื้อเช้า:</b> ข้าวต้มปลา หรือซีเรียลโฮลเกรนคู่กับนมจืด",
+                    "<b>มื้อกลางวัน:</b> ข้าวกะเพราอกไก่ (ใช้น้ำมันน้อย/ไม่ใส่รสหวานจัด)",
+                    "<b>มื้อเย็น:</b> แกงเลียงกุ้งสด หรือแกงจืดเต้าหู้หมูสับ + ข้าวสวย"
                 ]
             },
             sat: {
-                title: "📅 วันเสาร์: เคลื่อนไหวสนุกๆ ตามใจชอบ",
+                title: "วันเสาร์: เคลื่อนไหวร่างกายแบบผ่อนคลาย",
                 workout: [
-                    "กิจกรรมสนุกๆ: เปิดคลิปเต้นตามเพลงที่ชอบ หรือทำความสะอาดห้องครั้งใหญ่ (30 นาที)"
+                    "<b>กิจกรรมอิสระ (30 นาที):</b> ทำความสะอาดห้องพัก จัดบ้าน หรือเต้นตามจังหวะเพลงเบาๆ แบบไม่กระโดด"
                 ],
                 diet: [
-                    "<b>มื้อเช้า:</b> ข้าวเหนียวหมูปิ้ง (เลือกเนื้อไม่ติดมัน) หรือไข่ต้ม 2 ฟอง",
-                    "<b>มื้อกลางวัน:</b> ข้าวหน้าไก่ย่าง (ไม่เอาหนัง)",
-                    "<b>มื้อเย็น:</b> สลัดโรลปูอัด/อกไก่ + น้ำเปล่า"
+                    "<b>มื้อเช้า:</b> ข้าวเหนียวหมูปิ้ง (เลือกเนื้อล้วน ไม่ติดมัน) หรือไข่ต้ม 2 ฟอง",
+                    "<b>มื้อกลางวัน:</b> ข้าวหน้าไก่ย่าง (ไม่รับประทานหนังไก่)",
+                    "<b>มื้อเย็น:</b> สลัดโรลปูอัด/อกไก่ คู่กับน้ำเปล่า"
                 ]
             },
             sun: {
-                title: "📅 วันอาทิตย์: ชาร์จพลังเต็มที่เพื่อสัปดาห์ใหม่",
+                title: "วันอาทิตย์: พักผ่อนร่างกายประจำสัปดาห์ (Full Rest Day)",
                 workout: [
-                    "พักผ่อนเต็มที่ นอนหลับพักผ่อนให้เพียงพอ"
+                    "พักผ่อนเต็มที่ เพื่อให้ร่างกายและกล้ามเนื้อได้ซ่อมแซมส่วนที่สึกหรอ"
                 ],
                 diet: [
-                    "<b>มื้อเช้า:</b> แพนเค้กกล้วยหอมทำเอง (แป้งโฮลวีต) + นมสด",
-                    "<b>มื้อกลางวัน:</b> สุกี้แห้งทะเลหรือไก่ (ใส่ผักเยอะๆ)",
-                    "<b>มื้อเย็น:</b> ปลานึ่งซีอิ๊ว + ผักลวก"
+                    "<b>มื้อเช้า:</b> แพนเค้กกล้วยหอม (ใช้แป้งโฮลวีต) + นมสด",
+                    "<b>มื้อกลางวัน:</b> สุกี้น้ำไก่หรือทะเล (ใส่ผักจำนวนมาก)",
+                    "<b>มื้อเย็น:</b> ปลานึ่ง หรือต้ม + ผักลวกและข้าวสวย"
                 ]
             }
         };
 
-        const quotes = [
-            "\"ความพยายามไม่เคยทำร้ายใคร ค่อยๆ ทำทีละนิดเพื่อตัวเราเองนะ!\"",
-            "\"ไม่ได้แข่งกับใคร แข่งกับตัวเองเมื่อวานนี้ก็พอ!\"",
-            "\"สุขภาพที่ดีเริ่มต้นจากการลงมือทำตั้งแต่วันนี้ สู้ๆ!\"",
-            "\"หุ่นในฝันไม่ได้มาจากการรอคอย แต่มาจากการลงมือทำ!\"",
-            "\"เหนื่อยได้ พักได้ แต่ห้ามถอดใจเด็ดขาด!\""
-        ];
-
         function selectDay(dayKey, element) {
-            // เปลี่ยนสถานะปุ่มแอคทีฟ
             document.querySelectorAll('.day-tab').forEach(tab => tab.classList.remove('active'));
             element.classList.add('active');
 
-            // ดึงข้อมูลตามวันที่กด
             const data = scheduleData[dayKey];
             const area = document.getElementById('scheduleArea');
 
@@ -400,16 +381,11 @@
 
             area.innerHTML = `
                 <h2>${data.title}</h2>
-                <div class="section-title">⚡ กิจกรรมการออกกำลังกาย</div>
+                <div class="section-title">การออกกำลังกาย</div>
                 <ul>${workoutHtml}</ul>
-                <div class="section-title">🥗 แนวทางการกินอาหาร</div>
+                <div class="section-title">แนวทางโภชนาการ</div>
                 <ul>${dietHtml}</ul>
             `;
-        }
-
-        function changeQuote() {
-            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            document.getElementById('quoteDisplay').innerText = randomQuote;
         }
     </script>
 
