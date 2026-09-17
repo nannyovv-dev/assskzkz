@@ -84,9 +84,8 @@
             justify-content: center;
         }
 
-        /* รูปภาพท่าประกอบน่ารักๆ */
         .illustration-box {
-            height: 110px;
+            height: 100px;
             background: #150a1b;
             border-radius: 16px;
             display: flex;
@@ -97,12 +96,11 @@
         }
 
         .illustration-box svg {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             fill: var(--light-pink);
         }
 
-        /* กล่องวิธีเล่นแบบอ่านง่าย */
         .instruction-card {
             background: rgba(255, 42, 133, 0.1);
             border-left: 4px solid var(--neon-pink);
@@ -173,7 +171,6 @@
             margin-top: 10px;
         }
 
-        /* Success Popup */
         .success-overlay {
             display: none;
             position: absolute;
@@ -221,17 +218,15 @@
         <div class="phase-title" id="phase">พร้อมยังมึง? ✨</div>
         <div class="move-name" id="move">กด START เพื่อลุย!</div>
         
-        <!-- รูปท่าประกอบ -->
         <div class="illustration-box" id="graphic-box">
             <span style="font-size: 40px;">🏋️‍♀️</span>
         </div>
 
-        <!-- คำอธิบายท่า -->
         <div class="instruction-card" id="instruction">
             👉 **วิธีเล่น:** กดปุ่ม START ด้านล่างเพื่อเริ่มนับถอยหลังนะมึง!
         </div>
 
-        <div class="timer-display" id="timer">00:30</div>
+        <div class="timer-display" id="timer">00:10</div>
         <div class="progress-text" id="progress">ท่าที่ 1 / 8</div>
     </div>
 
@@ -243,7 +238,6 @@
         <button class="btn-nav" id="next-btn" onclick="nextStep()">ข้ามท่า ⏭️</button>
     </div>
 
-    <!-- Success Popup -->
     <div class="success-overlay" id="success-popup">
         <div class="check-icon">🎀</div>
         <div class="success-title">เก่งมากมึง! จบไปอีกท่า!</div>
@@ -253,7 +247,6 @@
 </div>
 
 <script>
-    // รายละเอียดท่า + SVG ท่าประกอบน่ารักๆ
     const workoutData = [
         {
             name: "1. เดินย่ำอยู่กับที่ + แกว่งแขน 🚶‍♀️",
@@ -262,7 +255,7 @@
         },
         {
             name: "2. Wall Sit (พิงกำแพงย่อตัว) 🧱",
-            desc: "💡 **วิธีทำ:** เอาหลังพิงกำแพง ย่อตัวลงมาเหมือนนั่งเก้าอี้อากาศ **"เกร็งค้างไว้"** 30 วิ!",
+            desc: "💡 **วิธีทำ:** เอาหลังพิงกำแพง ย่อตัวลงมาเหมือนนั่งเก้าอี้อากาศ **เกร็งค้างไว้** 30 วิ!",
             icon: `<svg viewBox="0 0 24 24"><path d="M12 5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm1 14v-6h3v-2h-5v5h-2v5h4z"/></svg>`
         },
         {
@@ -287,12 +280,12 @@
         },
         {
             name: "7. ชูขวดน้ำขึ้นเหนือศีรษะ 🍾",
-            desc: "💡 **วิธีทำ:** ถือขวดน้ำ 600ml ชูขึ้นสุดแขน แล้วลดลงมาระดับอก **"ยกลง-ดันขึ้นซ้ำๆ"** ห้ามถือค้างนะมึง!",
+            desc: "💡 **วิธีทำ:** ถือขวดน้ำ 600ml ชูขึ้นสุดแขน แล้วลดลงมาระดับอก **ยกลลง-ดันขึ้นซ้ำๆ** ห้ามถือค้างนะมึง!",
             icon: `<svg viewBox="0 0 24 24"><path d="M7.5 4.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v1.09c1.78.36 3.1 1.93 3.1 3.81V18c0 1.1-.9 2-2 2h-5c-1.1 0-2-.9-2-2V9.4c0-1.88 1.32-3.45 3.1-3.81V4.5zM16.5 4.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v1.09c1.78.36 3.1 1.93 3.1 3.81V18c0 1.1-.9 2-2 2h-5c-1.1 0-2-.9-2-2V9.4c0-1.88 1.32-3.45 3.1-3.81V4.5z"/></svg>`
         },
         {
             name: "8. Plank (ซุกหมอนเกร็งหน้าท้อง) 🧘‍♀️",
-            desc: "💡 **วิธีทำ:** วางศอกกับหมอน เกร็งหน้าท้องให้ก้นไม่โด่งไม่ห้อย **"เกร็งนิ่งค้างไว้"** 30 วิ ท่าสุดท้ายแล้ว!",
+            desc: "💡 **วิธีทำ:** วางศอกกับหมอน เกร็งหน้าท้องให้ก้นไม่โด่งไม่ห้อย **เกร็งนิ่งค้างไว้** 30 วิ ท่าสุดท้ายแล้ว!",
             icon: `<svg viewBox="0 0 24 24"><path d="M2 18h20v2H2zm1.5-5h17l-1-3h-15l-1 3zm2.5-5h12l-1-2h-10l-1 2z"/></svg>`
         }
     ];
@@ -302,22 +295,36 @@
     const PREP_TIME = 10;
 
     let currentStep = 0;
-    let timeLeft = WORK_TIME;
+    let timeLeft = PREP_TIME;
     let currentPhase = 'IDLE';
     let timerInterval = null;
+    let audioCtx = null;
 
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
     function playSound(freq, type, duration) {
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = type;
-        osc.frequency.value = freq;
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
-        osc.stop(audioCtx.currentTime + duration);
+        try {
+            initAudio();
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = type;
+            osc.frequency.value = freq;
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
+            osc.stop(audioCtx.currentTime + duration);
+        } catch(e) {
+            console.log("Audio Error:", e);
+        }
     }
 
     function triggerVibrate() {
@@ -327,6 +334,7 @@
     }
 
     function toggleWorkout() {
+        initAudio();
         if (currentPhase === 'IDLE' || currentPhase === 'PAUSED') {
             startWorkout();
         } else {
@@ -342,9 +350,10 @@
             currentPhase = window.lastPhase || 'WORK';
         }
 
-        document.getElementById('start-btn').innerText = "PAUSE ⏸️";
-        document.getElementById('start-btn').style.background = "#fff";
-        document.getElementById('start-btn').style.color = "#000";
+        const btn = document.getElementById('start-btn');
+        btn.innerText = "PAUSE ⏸️";
+        btn.style.background = "#fff";
+        btn.style.color = "#000";
 
         updateUI();
 
@@ -398,9 +407,10 @@
         window.lastPhase = currentPhase;
         currentPhase = 'PAUSED';
         clearInterval(timerInterval);
-        document.getElementById('start-btn').innerText = "RESUME ▶️";
-        document.getElementById('start-btn').style.background = "linear-gradient(135deg, var(--neon-pink), #e0115f)";
-        document.getElementById('start-btn').style.color = "#fff";
+        const btn = document.getElementById('start-btn');
+        btn.innerText = "RESUME ▶️";
+        btn.style.background = "linear-gradient(135deg, var(--neon-pink), #e0115f)";
+        btn.style.color = "#fff";
         updateUI();
     }
 
@@ -427,7 +437,8 @@
         currentPhase = 'PREP';
         timeLeft = PREP_TIME;
         document.getElementById('success-popup').style.display = 'none';
-        if (document.getElementById('start-btn').innerText.includes("PAUSE")) {
+        const btn = document.getElementById('start-btn');
+        if (btn.innerText.includes("PAUSE")) {
             startWorkout();
         } else {
             updateUI();
@@ -442,9 +453,10 @@
         document.getElementById('move').innerText = "เก่งมากมึง! ครบ 8 ท่าสั่นๆ ชิวๆ 💖";
         document.getElementById('instruction').innerHTML = "💡 **ภารกิจสำเร็จ:** วันนี้มึงทำได้ดีมาก ดื่มน้ำเปล่าเยอะๆ แล้วไปพักผ่อนได้เลย!";
         document.getElementById('timer').innerText = "00:00";
-        document.getElementById('start-btn').innerText = "PLAY AGAIN 🔄";
-        document.getElementById('start-btn').style.background = "linear-gradient(135deg, var(--neon-pink), #e0115f)";
-        document.getElementById('start-btn').style.color = "#fff";
+        const btn = document.getElementById('start-btn');
+        btn.innerText = "PLAY AGAIN 🔄";
+        btn.style.background = "linear-gradient(135deg, var(--neon-pink), #e0115f)";
+        btn.style.color = "#fff";
         currentStep = 0;
     }
 
@@ -474,7 +486,6 @@
             phaseElem.style.color = "#fff";
         }
 
-        // อัปเดตรูป SVG และคำอธิบายท่า
         if (currentPhase !== 'IDLE') {
             graphicBox.innerHTML = currentMove.icon;
             instruction.innerHTML = currentMove.desc;
