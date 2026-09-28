@@ -59,6 +59,88 @@
             margin-bottom: 14px;
         }
 
+        /* ตารางวันพัก / ออกกำลังกาย */
+        .schedule-box {
+            background: #140b19;
+            border: 1px solid var(--light-pink);
+            border-radius: 16px;
+            padding: 10px;
+            margin-bottom: 14px;
+        }
+
+        .schedule-title {
+            font-size: 13px;
+            color: var(--light-pink);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+
+        .day-item {
+            background: #23122c;
+            border-radius: 8px;
+            padding: 6px 2px;
+            font-size: 11px;
+        }
+
+        .day-item.workout {
+            background: rgba(255, 42, 133, 0.25);
+            border: 1px solid var(--neon-pink);
+            color: var(--soft-white);
+        }
+
+        .day-item.rest {
+            background: rgba(0, 242, 139, 0.15);
+            border: 1px solid var(--green-success);
+            color: var(--green-success);
+        }
+
+        /* ระบบล็อกอินรายวัน */
+        .checkin-box {
+            background: #09050b;
+            border: 2px solid #3d2048;
+            border-radius: 20px;
+            padding: 12px;
+            margin-bottom: 14px;
+        }
+
+        .btn-checkin {
+            background: linear-gradient(135deg, var(--green-success), #00b366);
+            color: #000;
+            border: none;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Mitr', sans-serif;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 6px;
+        }
+
+        .btn-checkin:disabled {
+            background: #2b1735;
+            color: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        .checkin-log {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            max-height: 60px;
+            overflow-y: auto;
+            text-align: left;
+            background: #140a1a;
+            padding: 6px 10px;
+            border-radius: 8px;
+        }
+
         .status-box {
             background: #09050b;
             border: 2px solid #3d2048;
@@ -212,7 +294,28 @@
 
 <div class="container">
     <h1>💖 8-MIN EASY FIT 💖</h1>
-    <div class="subtitle">โทนชมพูแซ่บ + รูปท่าประกอบน่ารักๆ</div>
+    <div class="subtitle">โทนชมพูแซ่บ + ระบบเช็กชื่อรายวัน</div>
+
+    <!-- ตารางวันพัก/ออกกำลังกาย -->
+    <div class="schedule-box">
+        <div class="schedule-title">📅 ตารางประจำสัปดาห์ (4 วันลุย / 3 วันพัก)</div>
+        <div class="days-grid">
+            <div class="day-item workout">จ.<br>🔥 ลุย</div>
+            <div class="day-item rest">อ.<br>☕ พัก</div>
+            <div class="day-item workout">พ.<br>🔥 ลุย</div>
+            <div class="day-item rest">พฤ.<br>☕ พัก</div>
+            <div class="day-item workout">ศ.<br>🔥 ลุย</div>
+            <div class="day-item rest">ส.<br>☕ พัก</div>
+            <div class="day-item workout">อา.<br>🔥 ลุย</div>
+        </div>
+    </div>
+
+    <!-- ระบบเช็กชื่อเข้าใช้งานรายวัน -->
+    <div class="checkin-box">
+        <div id="checkin-status" style="font-size: 13px; font-weight: 600;">📌 ล็อกอินเช็กชื่อวันนี้</div>
+        <button class="btn-checkin" id="checkin-btn" onclick="doCheckIn()">✅ เช็กชื่อเข้าใช้งานวันนี้!</button>
+        <div class="checkin-log" id="checkin-log">ประวัติการเข้าใช้งาน: -</div>
+    </div>
 
     <div class="status-box">
         <div class="phase-title" id="phase">พร้อมยังมึง? ✨</div>
@@ -300,6 +403,49 @@
     let timerInterval = null;
     let audioCtx = null;
 
+    // --- ระบบ Check-in ล็อกอินรายวัน ---
+    function getTodayString() {
+        const today = new Date();
+        return today.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function loadCheckInHistory() {
+        const history = JSON.parse(localStorage.getItem('easyfit_checkins') || '[]');
+        const todayStr = getTodayString();
+        const btn = document.getElementById('checkin-btn');
+        const status = document.getElementById('checkin-status');
+        const logBox = document.getElementById('checkin-log');
+
+        if (history.includes(todayStr)) {
+            btn.innerText = "🎉 เช็กชื่อวันนี้เรียบร้อยแล้ว!";
+            btn.disabled = true;
+            status.innerText = "✨ วันนี้มึงล็อกอินแล้ว เจ๋งมาก!";
+            status.style.color = "var(--green-success)";
+        } else {
+            btn.innerText = "✅ เช็กชื่อเข้าใช้งานวันนี้!";
+            btn.disabled = false;
+            status.innerText = "📌 วันนี้ยังไม่ได้เช็กชื่อ กดเลยมึง!";
+            status.style.color = "var(--yellow-prep)";
+        }
+
+        if (history.length > 0) {
+            logBox.innerHTML = "<b>ประวัติล็อกอิน:</b><br>" + history.slice(-5).reverse().join('<br>');
+        } else {
+            logBox.innerHTML = "ประวัติการเข้าใช้งาน: ยังไม่มีข้อมูล";
+        }
+    }
+
+    function doCheckIn() {
+        const todayStr = getTodayString();
+        let history = JSON.parse(localStorage.getItem('easyfit_checkins') || '[]');
+        if (!history.includes(todayStr)) {
+            history.push(todayStr);
+            localStorage.setItem('easyfit_checkins', JSON.stringify(history));
+        }
+        loadCheckInHistory();
+    }
+
+    // --- ระบบ Workout & Audio ---
     function initAudio() {
         if (!audioCtx) {
             audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -458,6 +604,9 @@
         btn.style.background = "linear-gradient(135deg, var(--neon-pink), #e0115f)";
         btn.style.color = "#fff";
         currentStep = 0;
+        
+        // จบ Workout อัปเดตเช็กชื่อให้อัตโนมัติด้วย
+        doCheckIn();
     }
 
     function updateUI() {
@@ -499,6 +648,8 @@
         document.getElementById('next-btn').disabled = (currentStep === workoutData.length - 1);
     }
 
+    // โหลดประวัติเช็กชื่อเมื่อเปิดแอป
+    loadCheckInHistory();
     updateUI();
 </script>
 
