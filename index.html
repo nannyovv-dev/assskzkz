@@ -100,7 +100,7 @@
             color: var(--green-success);
         }
 
-        /* ระบบล็อกอินรายวัน */
+        /* ระบบล็อกอินรายวัน (2 โหมด) */
         .checkin-box {
             background: #09050b;
             border: 2px solid #3d2048;
@@ -109,31 +109,49 @@
             margin-bottom: 14px;
         }
 
+        .checkin-btn-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
         .btn-checkin {
-            background: linear-gradient(135deg, var(--green-success), #00b366);
-            color: #000;
+            flex: 1;
             border: none;
-            padding: 10px;
-            font-size: 13px;
+            padding: 10px 6px;
+            font-size: 12px;
             font-weight: 600;
             font-family: 'Mitr', sans-serif;
             border-radius: 12px;
             cursor: pointer;
-            width: 100%;
-            margin-top: 6px;
+            transition: 0.2s;
+        }
+
+        .btn-checkin-workout {
+            background: linear-gradient(135deg, var(--neon-pink), #e0115f);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(255, 42, 133, 0.3);
+        }
+
+        .btn-checkin-rest {
+            background: linear-gradient(135deg, var(--green-success), #00b366);
+            color: #000;
+            box-shadow: 0 2px 10px rgba(0, 242, 139, 0.3);
         }
 
         .btn-checkin:disabled {
-            background: #2b1735;
-            color: var(--text-muted);
+            background: #2b1735 !important;
+            color: var(--text-muted) !important;
+            box-shadow: none !important;
             cursor: not-allowed;
+            opacity: 0.6;
         }
 
         .checkin-log {
             font-size: 11px;
             color: var(--text-muted);
             margin-top: 8px;
-            max-height: 50px;
+            max-height: 60px;
             overflow-y: auto;
             text-align: left;
             background: #140a1a;
@@ -311,10 +329,13 @@
         </div>
     </div>
 
-    <!-- ระบบเช็กชื่อเข้าใช้งานรายวัน -->
+    <!-- ระบบเช็กชื่อเข้าใช้งานรายวัน (เลือกโหมดได้) -->
     <div class="checkin-box">
         <div id="checkin-status" style="font-size: 12px; font-weight: 600;">📌 ล็อกอินเช็กชื่อวันนี้</div>
-        <button class="btn-checkin" id="checkin-btn" onclick="doCheckIn()">✅ เช็กชื่อเข้าใช้งานวันนี้!</button>
+        <div class="checkin-btn-group">
+            <button class="btn-checkin btn-checkin-workout" id="checkin-workout-btn" onclick="doCheckIn('WORKOUT')">🏋️‍♀️ ออกกำลังกาย</button>
+            <button class="btn-checkin btn-checkin-rest" id="checkin-rest-btn" onclick="doCheckIn('REST')">☕ วันพักผ่อน</button>
+        </div>
         <div class="checkin-log" id="checkin-log">ประวัติการเข้าใช้งาน: -</div>
     </div>
 
@@ -409,44 +430,58 @@
     let timerInterval = null;
     let audioCtx = null;
 
-    // --- ระบบ Check-in ล็อกอินรายวัน ---
+    // --- ระบบ Check-in ล็อกอินรายวัน (2 โหมด) ---
     function getTodayString() {
         const today = new Date();
         return today.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' });
     }
 
     function loadCheckInHistory() {
-        const history = JSON.parse(localStorage.getItem('easyfit_checkins') || '[]');
+        const history = JSON.parse(localStorage.getItem('easyfit_checkins_v2') || '[]');
         const todayStr = getTodayString();
-        const btn = document.getElementById('checkin-btn');
+        const workoutBtn = document.getElementById('checkin-workout-btn');
+        const restBtn = document.getElementById('checkin-rest-btn');
         const status = document.getElementById('checkin-status');
         const logBox = document.getElementById('checkin-log');
 
-        if (history.includes(todayStr)) {
-            btn.innerText = "🎉 เช็กชื่อวันนี้เรียบร้อยแล้ว!";
-            btn.disabled = true;
-            status.innerText = "✨ วันนี้มึงล็อกอินแล้ว เจ๋งมาก!";
-            status.style.color = "var(--green-success)";
+        const todayEntry = history.find(item => item.date === todayStr);
+
+        if (todayEntry) {
+            workoutBtn.disabled = true;
+            restBtn.disabled = true;
+            if (todayEntry.type === 'WORKOUT') {
+                status.innerText = "🔥 วันนี้มึงเช็กอิน: ออกกำลังกายแล้ว!";
+                status.style.color = "var(--neon-pink)";
+            } else {
+                status.innerText = "☕ วันนี้มึงเช็กอิน: วันพักผ่อนแล้ว!";
+                status.style.color = "var(--green-success)";
+            }
         } else {
-            btn.innerText = "✅ เช็กชื่อเข้าใช้งานวันนี้!";
-            btn.disabled = false;
-            status.innerText = "📌 วันนี้ยังไม่ได้เช็กชื่อ กดเลยมึง!";
+            workoutBtn.disabled = false;
+            restBtn.disabled = false;
+            status.innerText = "📌 วันนี้ยังไม่ได้เช็กชื่อ กดเลือกโหมดได้เลยมึง!";
             status.style.color = "var(--yellow-prep)";
         }
 
         if (history.length > 0) {
-            logBox.innerHTML = "<b>ประวัติล็อกอิน:</b><br>" + history.slice(-5).reverse().join('<br>');
+            logBox.innerHTML = "<b>ประวัติเช็กอินล่าสุด:</b><br>" + 
+                history.slice(-5).reverse().map(item => {
+                    const icon = item.type === 'WORKOUT' ? '🔥 ออกกำลังกาย' : '☕ วันพัก';
+                    return `${item.date} - ${icon}`;
+                }).join('<br>');
         } else {
             logBox.innerHTML = "ประวัติการเข้าใช้งาน: ยังไม่มีข้อมูล";
         }
     }
 
-    function doCheckIn() {
+    function doCheckIn(type) {
         const todayStr = getTodayString();
-        let history = JSON.parse(localStorage.getItem('easyfit_checkins') || '[]');
-        if (!history.includes(todayStr)) {
-            history.push(todayStr);
-            localStorage.setItem('easyfit_checkins', JSON.stringify(history));
+        let history = JSON.parse(localStorage.getItem('easyfit_checkins_v2') || '[]');
+        const existingIndex = history.findIndex(item => item.date === todayStr);
+
+        if (existingIndex === -1) {
+            history.push({ date: todayStr, type: type });
+            localStorage.setItem('easyfit_checkins_v2', JSON.stringify(history));
         }
         loadCheckInHistory();
     }
@@ -611,7 +646,7 @@
         btn.style.color = "#fff";
         currentStep = 0;
         
-        doCheckIn();
+        doCheckIn('WORKOUT');
     }
 
     function updateUI() {
