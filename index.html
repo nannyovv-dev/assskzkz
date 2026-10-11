@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>15-MIN SAFE-KNEE FIT ✨ Pink Edition</title>
+    <title>30-MIN FULL-BODY พส.จีน ✨ Pink Edition</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;600;700&display=swap" rel="stylesheet">
@@ -47,7 +47,7 @@
 
         h1 {
             color: var(--neon-pink);
-            font-size: 24px;
+            font-size: 22px;
             margin: 0 0 4px 0;
             font-weight: 700;
             text-shadow: 0 0 10px rgba(255, 42, 133, 0.5);
@@ -55,23 +55,36 @@
 
         .subtitle {
             color: var(--text-muted);
-            font-size: 13px;
-            margin-bottom: 14px;
+            font-size: 12px;
+            margin-bottom: 12px;
         }
 
-        /* ตารางวันพัก / ออกกำลังกาย */
+        /* กล่องแสดงรอบ (Rounds) */
+        .round-badge {
+            background: rgba(255, 42, 133, 0.2);
+            border: 1px solid var(--neon-pink);
+            color: var(--light-pink);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* ตารางสัปดาห์ */
         .schedule-box {
             background: #140b19;
             border: 1px solid var(--light-pink);
             border-radius: 16px;
             padding: 10px;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .schedule-title {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--light-pink);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
         }
 
@@ -84,8 +97,8 @@
         .day-item {
             background: #23122c;
             border-radius: 8px;
-            padding: 6px 2px;
-            font-size: 10px;
+            padding: 5px 2px;
+            font-size: 9px;
         }
 
         .day-item.workout {
@@ -100,26 +113,26 @@
             color: var(--green-success);
         }
 
-        /* ระบบล็อกอินรายวัน (2 โหมด) */
+        /* ระบบเช็กอินรายวัน */
         .checkin-box {
             background: #09050b;
             border: 2px solid #3d2048;
             border-radius: 20px;
-            padding: 12px;
-            margin-bottom: 14px;
+            padding: 10px;
+            margin-bottom: 12px;
         }
 
         .checkin-btn-group {
             display: flex;
             gap: 8px;
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         .btn-checkin {
             flex: 1;
             border: none;
-            padding: 10px 6px;
-            font-size: 12px;
+            padding: 8px 4px;
+            font-size: 11px;
             font-weight: 600;
             font-family: 'Mitr', sans-serif;
             border-radius: 12px;
@@ -148,14 +161,14 @@
         }
 
         .checkin-log {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-muted);
-            margin-top: 8px;
-            max-height: 60px;
+            margin-top: 6px;
+            max-height: 50px;
             overflow-y: auto;
             text-align: left;
             background: #140a1a;
-            padding: 6px 10px;
+            padding: 6px 8px;
             border-radius: 8px;
         }
 
@@ -163,41 +176,41 @@
             background: #09050b;
             border: 2px solid #3d2048;
             border-radius: 20px;
-            padding: 16px;
-            margin-bottom: 14px;
+            padding: 14px;
+            margin-bottom: 12px;
         }
 
         .phase-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             color: var(--light-pink);
         }
 
         .move-name {
-            font-size: 18px;
+            font-size: 16px;
             color: var(--neon-pink);
             font-weight: 700;
             margin: 6px 0;
-            min-height: 48px;
+            min-height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .illustration-box {
-            height: 110px;
+            height: 90px;
             background: #150a1b;
-            border-radius: 16px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 10px 0;
+            margin: 8px 0;
             border: 1px dashed var(--neon-pink);
         }
 
         .illustration-box svg {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             fill: var(--light-pink);
         }
 
@@ -205,16 +218,16 @@
             background: rgba(255, 42, 133, 0.1);
             border-left: 4px solid var(--neon-pink);
             border-radius: 8px;
-            padding: 8px 12px;
-            font-size: 12px;
+            padding: 8px 10px;
+            font-size: 11px;
             color: var(--soft-white);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             text-align: left;
             line-height: 1.4;
         }
 
         .timer-display {
-            font-size: 52px;
+            font-size: 48px;
             font-weight: 700;
             font-family: 'Mitr', monospace;
             color: #fff;
@@ -225,16 +238,16 @@
 
         .progress-text {
             color: var(--text-muted);
-            font-size: 12px;
-            margin-top: 6px;
+            font-size: 11px;
+            margin-top: 5px;
         }
 
         .btn {
             background: linear-gradient(135deg, var(--neon-pink), #e0115f);
             color: #fff;
             border: none;
-            padding: 14px;
-            font-size: 17px;
+            padding: 12px;
+            font-size: 16px;
             font-weight: 600;
             font-family: 'Mitr', sans-serif;
             border-radius: 16px;
@@ -250,8 +263,8 @@
             background-color: #2b1735;
             border: 1px solid #4a275b;
             color: var(--light-pink);
-            padding: 10px;
-            font-size: 12px;
+            padding: 8px;
+            font-size: 11px;
             font-family: 'Mitr', sans-serif;
             border-radius: 12px;
             cursor: pointer;
@@ -260,16 +273,12 @@
         }
 
         .btn-nav:hover { background-color: #3b2048; }
-
-        .btn-nav:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
+        .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
 
         .nav-group {
             display: flex;
-            gap: 8px;
-            margin-top: 10px;
+            gap: 6px;
+            margin-top: 8px;
         }
 
         .success-overlay {
@@ -286,7 +295,7 @@
         }
 
         .check-icon {
-            font-size: 65px;
+            font-size: 60px;
             animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -297,43 +306,45 @@
 
         .success-title {
             color: var(--green-success);
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
-            margin: 10px 0 5px 0;
+            margin: 8px 0 4px 0;
         }
 
         .success-desc {
             color: #fff;
-            font-size: 14px;
-            margin-bottom: 20px;
+            font-size: 13px;
+            margin-bottom: 16px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>💖 15-MIN SAFE-KNEE FIT 💖</h1>
-    <div class="subtitle">15 นาทีเซฟเข่า + กระชับขา เอว อก วิ่งคล่อง!</div>
+    <h1>🇨🇳 30-MIN พส.จีน ฟิตหุ่นสับ 🇨🇳</h1>
+    <div class="subtitle">30 นาทีเต็ม ลดทุกส่วน เซฟเข่า สไตล์สาวโต่วอิน!</div>
+
+    <div class="round-badge" id="round-badge">🏆 รอบที่ 1 / 3 (รวม 30 นาที)</div>
 
     <!-- ตารางวันพัก/ออกกำลังกาย -->
     <div class="schedule-box">
-        <div class="schedule-title">📅 ตารางสัปดาห์ (4 วันลุย / 3 วันพัก)</div>
+        <div class="schedule-title">📅 ตาราง 30 นาที (4 วันลุย / 3 วันพัก)</div>
         <div class="days-grid">
-            <div class="day-item workout">จ.<br>🔥 ลุย</div>
-            <div class="day-item workout">อ.<br>🔥 ลุย</div>
+            <div class="day-item workout">จ.<br>🔥 30น.</div>
+            <div class="day-item workout">อ.<br>🔥 30น.</div>
             <div class="day-item rest">พ.<br>☕ พัก</div>
-            <div class="day-item workout">พฤ.<br>🔥 ลุย</div>
-            <div class="day-item workout">ศ.<br>🔥 ลุย</div>
+            <div class="day-item workout">พฤ.<br>🔥 30น.</div>
+            <div class="day-item workout">ศ.<br>🔥 30น.</div>
             <div class="day-item rest">ส.<br>☕ พัก</div>
             <div class="day-item rest">อา.<br>☕ พัก</div>
         </div>
     </div>
 
-    <!-- ระบบเช็กชื่อเข้าใช้งานรายวัน (เลือกโหมดได้) -->
+    <!-- ระบบเช็กชื่อรายวัน -->
     <div class="checkin-box">
-        <div id="checkin-status" style="font-size: 12px; font-weight: 600;">📌 ล็อกอินเช็กชื่อวันนี้</div>
+        <div id="checkin-status" style="font-size: 11px; font-weight: 600;">📌 ล็อกอินเช็กชื่อวันนี้</div>
         <div class="checkin-btn-group">
-            <button class="btn-checkin btn-checkin-workout" id="checkin-workout-btn" onclick="doCheckIn('WORKOUT')">🏋️‍♀️ ออกกำลังกาย</button>
+            <button class="btn-checkin btn-checkin-workout" id="checkin-workout-btn" onclick="doCheckIn('WORKOUT')">🏋️‍♀️ ออกกำลังกาย 30น.</button>
             <button class="btn-checkin btn-checkin-rest" id="checkin-rest-btn" onclick="doCheckIn('REST')">☕ วันพักผ่อน</button>
         </div>
         <div class="checkin-log" id="checkin-log">ประวัติการเข้าใช้งาน: -</div>
@@ -341,21 +352,21 @@
 
     <div class="status-box">
         <div class="phase-title" id="phase">พร้อมยังมึง? ✨</div>
-        <div class="move-name" id="move">กด START เพื่อลุย 15 นาที!</div>
+        <div class="move-name" id="move">กด START เพื่อลุย 30 นาที!</div>
         
         <div class="illustration-box" id="graphic-box">
-            <span style="font-size: 40px;">🏋️‍♀️</span>
+            <span style="font-size: 35px;">🇨🇳💃</span>
         </div>
 
         <div class="instruction-card" id="instruction">
-            👉 **วิธีเล่น:** กดปุ่ม START ด้านล่างเพื่อเริ่มนับถอยหลังนะมึง!
+            👉 **วิธีเล่น:** 10 ท่าฮิต พัก 15 วิ ลุย 45 วิ วนไป 3 รอบเต็มๆ จบครบ 30 นาที!
         </div>
 
         <div class="timer-display" id="timer">00:15</div>
-        <div class="progress-text" id="progress">ท่าที่ 1 / 9</div>
+        <div class="progress-text" id="progress">ท่าที่ 1 / 10 (รอบ 1)</div>
     </div>
 
-    <button class="btn" id="start-btn" onclick="toggleWorkout()">START WORKOUT 🚀</button>
+    <button class="btn" id="start-btn" onclick="toggleWorkout()">START 30-MIN WORKOUT 🚀</button>
 
     <div class="nav-group">
         <button class="btn-nav" id="prev-btn" onclick="prevStep()">⏮️ ย้อนกลับ</button>
@@ -364,80 +375,86 @@
     </div>
 
     <div class="success-overlay" id="success-popup">
-        <div class="check-icon">🎀</div>
-        <div class="success-title">เก่งมากมึง! จบไปอีกท่า!</div>
-        <div class="success-desc" id="completed-move-name">จบท่าเรียบร้อย 🎉</div>
-        <button class="btn" style="background: var(--green-success); color: #000;" onclick="closeSuccessPopup()">ไปท่าต่อไปเลยมึง! 💖</button>
+        <div class="check-icon">🐼</div>
+        <div class="success-title" id="success-popup-title">เก่งมากมึง! จบรอบนี้แล้ว!</div>
+        <div class="success-desc" id="completed-move-name">พักหายใจแป๊บ ลุยต่อท่าต่อไป! 🎉</div>
+        <button class="btn" style="background: var(--green-success); color: #000;" onclick="closeSuccessPopup()">ลุยต่อเลยมึง! 💖</button>
     </div>
 </div>
 
 <script>
     const workoutData = [
         {
-            name: "1. Glute Bridge & Squeeze 🍑",
-            desc: "💡 **วิธีทำ:** นอนหงาย ชันเข่าขึ้น ยกสะโพกขึ้นฟ้า เกร็งก้นแน่นๆ 2 วินาทีแล้วค่อยๆ วางลง<br>✨ **เป้าหมาย:** เสริมก้นและต้นขาหลัง ทำให้สับขาและก้าววิ่งได้แรงขึ้นโดยไม่เจ็บเข่า",
-            icon: `<svg viewBox="0 0 24 24"><path d="M19 15c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm2-4h10v2H7z"/></svg>`
-        },
-        {
-            name: "2. Standing Side Leg Lift 🦵",
-            desc: "💡 **วิธีทำ:** ยืนตรง เอามือจับผนัง/เก้าอี้ เตะขาออกด้านข้างช้าๆ เกร็งสะโพกข้าง ทำข้างละ 30 วินาที<br>✨ **เป้าหมาย:** ลดต้นขาด้านนอก และลดปีกสะโพก ไร้แรงกระแทกเข่า 100%",
+            name: "1. Standing Side Leg Raises 🦵",
+            desc: "💡 **วิธีทำ:** ยืนตรง เอามือจับพนักเก้าอี้ เตะขาออกด้านข้างช้าๆ เกร็งสะโพก ทำสลับข้าง<br>✨ **เป้าหมาย:** ลดต้นขาด้านนอก ปั้นสะโพกทรง พส.จีน เซฟเข่า 100%",
             icon: `<svg viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.8l1.8-.9z"/></svg>`
         },
         {
-            name: "3. Standing Bicycle Crunches 🚲",
-            desc: "💡 **วิธีทำ:** ยืนตรง มือแตะหลังหู ยกเข่าซ้ายขึ้นเบาๆ พร้อมบิดศอกขวาไปแตะ ทำสลับข้าง<br>✨ **เป้าหมาย:** รีดไขมันข้างเอว (Love Handles) กระชับแกนกลางลำตัว",
+            name: "2. Standing Bicycle Crunches 🚲",
+            desc: "💡 **วิธีทำ:** ยืนตรง มือแตะหลังหู ยกเข่าขึ้นเบาๆ บิดศอกชนเข่าสลับซ้ายขวา<br>✨ **เป้าหมาย:** สร้างเอวสอย (S-Line) และเบิร์นหน้าท้องส่วนล่าง",
             icon: `<svg viewBox="0 0 24 24"><path d="M15 5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-2.8 10.3l1.8-4.3 2 2v6h2v-7l-2.6-2.6.8-4C17.5 10.2 19 11 21 11V9c-1.6 0-2.8-.7-3.6-1.8l-1-1.5c-.3-.5-.9-.7-1.4-.7-.3 0-.6.1-.9.2L9 7.8V13h2V9.5l2.2-1.2-1.3 6.8-2.7-2.7-1.4 1.4 3.4 3.5z"/></svg>`
         },
         {
-            name: "4. Shadow Boxing & Core Twist 🥊",
-            desc: "💡 **วิธีทำ:** ยืนย่อขานิดเดียว รัวหมัดชกไปข้างหน้าพร้อมบิดลำตัวช่วงบนเร็วๆ สลับซ้าย-ขวา<br>✨ **เป้าหมาย:** เผาผลาญไขมันบริเวณอก ไหล่ และกระชับหน้าท้อง",
+            name: "3. Shadow Boxing & Core Twist 🥊",
+            desc: "💡 **วิธีทำ:** ย่อเข่านิดนึง รัวหมัดชกสลับซ้ายขวาพร้อมบิดลำตัวช่วงบนเร็วๆ<br>✨ **เป้าหมาย:** เบิร์นไขมันช่วงแขน ไหล่ และกระชับหน้าท้องรอบด้าน",
             icon: `<svg viewBox="0 0 24 24"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.67 12.33 2 11.5 2S10 2.67 10 3.5V5H6c-1.1 0-2 .9-2 2v4H2.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5H4v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4h1.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>`
         },
         {
-            name: "5. Good Mornings (Hinge) 🙇‍♀️",
-            desc: "💡 **วิธีทำ:** มือแตะหลังหู ยืนตรง พับสะโพกไปด้านหลัง ก้มตัวลงมาตรงๆ แล้วดันก้นกลับมายืนตรง<br>✨ **เป้าหมาย:** สร้างแฮมสตริงและข้อสะโพก ช่วยให้วิ่งยาวๆ แล้วไม่ปวดหลัง/เข่า",
+            name: "4. Good Mornings (Hinge) 🙇‍♀️",
+            desc: "💡 **วิธีทำ:** มือแตะหลังหู ยืนตรง พับสะโพกไปด้านหลัง ก้มตัวตรงๆ แล้วดันก้นกลับ<br>✨ **เป้าหมาย:** กระชับก้นและแฮมสตริง ทำให้ขาเรียวยาวสวย",
             icon: `<svg viewBox="0 0 24 24"><path d="M12 5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm1 14v-6h3v-2h-5v5h-2v5h4z"/></svg>`
         },
         {
-            name: "6. Inner Thigh Squeeze (หนีบหมอน) 💥",
-            desc: "💡 **วิธีทำ:** นั่งเก้าอี้ หรือนอนหงาย เอาหมอนหรือแก้วน้ำมาหนีบไว้ระหว่างเข่า แล้วเกร็งหนีบแน่นๆ 3 วิแล้วคลาย<br>✨ **เป้าหมาย:** ลดต้นขาด้านใน ขาเบียด หายห่วงแน่นอน",
+            name: "5. Sumo Squat Pulse (No Jump) 🔻",
+            desc: "💡 **วิธีทำ:** กางขาออกกว้าง ปลายเท้าชี้ออก ย่อตัวลงค้างไว้แล้วโยกตัวขึ้นลงเบาๆ<br>✨ **เป้าหมาย:** กำจัดขาเบียด ต้นขาด้านในกระชับเข้ารูป",
             icon: `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>`
         },
         {
-            name: "7. Arm Circle & Chest Fly 🦋",
-            desc: "💡 **วิธีทำ:** กางแขนออกข้างลำตัว หมุนเป็นวงกลมเล็กๆ 30 วิ จากนั้นตั้งหุบแขนเข้าหากันหนีบอก 30 วิ<br>✨ **เป้าหมาย:** ลดไขมันส่วนเกินตรงรอบอก หน้าอก และกระชับเนื้อใต้แขน",
+            name: "6. Arm Circle & Chest Fly 🦋",
+            desc: "💡 **วิธีทำ:** กางแขนหมุนวงกลมเล็กๆ สลับกับหุบแขนเข้าหากันหนีบอกแน่นๆ<br>✨ **เป้าหมาย:** กำจัดไขมันปีกหลัง เนื้อใต้แขน และกระชับหน้าอก",
             icon: `<svg viewBox="0 0 24 24"><path d="M7.5 4.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v1.09c1.78.36 3.1 1.93 3.1 3.81V18c0 1.1-.9 2-2 2h-5c-1.1 0-2-.9-2-2V9.4c0-1.88 1.32-3.45 3.1-3.81V4.5zM16.5 4.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v1.09c1.78.36 3.1 1.93 3.1 3.81V18c0 1.1-.9 2-2 2h-5c-1.1 0-2-.9-2-2V9.4c0-1.88 1.32-3.45 3.1-3.81V4.5z"/></svg>`
         },
         {
-            name: "8. Standing Calf Raises (เขย่งเท้า) 🦶",
-            desc: "💡 **วิธีทำ:** ยืนตรง ยึดผนังกันเซ ค่อยๆ เขย่งส้นเท้าขึ้นสุด ค้างไว้ 1 วินาที แล้ววางลงช้าๆ<br>✨ **เป้าหมาย:** เสริมสร้างเอ็นข้อเท้าและน่อง ทำให้วิ่งคล่อง ก้าวเท้าได้สปริงตัวดีมาก",
-            icon: `<svg viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.8l1.8-.9z"/></svg>`
+            name: "7. Standing Knee to Chest Lift 🦿",
+            desc: "💡 **วิธีทำ:** ยืนตัวตรง ยกเข่าขึ้นสูงระดับอกสลับซ้ายขวาเกร็งหน้าท้องทุกครั้งที่ยก<br>✨ **เป้าหมาย:** รีดไขมันหน้าท้องส่วนล่างแบบเร่งด่วน",
+            icon: `<svg viewBox="0 0 24 24"><path d="M19 15c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm2-4h10v2H7z"/></svg>`
         },
         {
-            name: "9. Wall Sit Hold 🧱",
-            desc: "💡 **วิธีทำ:** พิงหลังติดกำแพง ย่อตัวลงเล็กน้อย (ไม่ต้องย่อลึก) เกร็งค้างไว้ หายใจเข้าออกยาวๆ<br>✨ **เป้าหมาย:** เพิ่มความแข็งแรงกล้ามเนื้อเหนือเข่า (Quads) เซฟข้อเข่าระยะยาว!",
+            name: "8. Standing Oblique Crunches 💃",
+            desc: "💡 **วิธีทำ:** ยืนกางขาเล็กน้อย เอามือแตะหัว แล้วเอียงลำตัวด้านข้างให้ศอกแตะสะโพก<br>✨ **เป้าหมาย:** เก็บเอวห่วงยางข้างลำตัวให้ยุบไว",
+            icon: `<svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19H12c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/></svg>`
+        },
+        {
+            name: "9. Glute Bridge & Squeeze 🍑",
+            desc: "💡 **วิธีทำ:** นอนหงาย ชันเข่า ยกสะโพกขึ้นฟ้า เกร็งก้นแน่นๆ 2 วินาทีแล้ววางลง<br>✨ **เป้าหมาย:** ปั้นก้นกลมเด้ง ขาเฟิร์ม ไม่ปวดหลัง",
+            icon: `<svg viewBox="0 0 24 24"><path d="M19 15c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm2-4h10v2H7z"/></svg>`
+        },
+        {
+            name: "10. Wall Sit Hold 🧱",
+            desc: "💡 **วิธีทำ:** พิงหลังติดกำแพง ย่อตัวลงเล็กน้อย เกร็งค้างไว้ หายใจเข้าออกลึกๆ<br>✨ **เป้าหมาย:** เบิร์นพลังงานและเสริมความแข็งแรงกล้ามเนื้อขา",
             icon: `<svg viewBox="0 0 24 24"><path d="M12 5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm1 14v-6h3v-2h-5v5h-2v5h4z"/></svg>`
         }
     ];
 
-    const WORK_TIME = 60;
-    const REST_TIME = 30;
-    const PREP_TIME = 15;
+    const WORK_TIME = 45;
+    const REST_TIME = 15;
+    const PREP_TIME = 10;
 
     let currentStep = 0;
+    let currentRound = 1;
+    const totalRounds = 3;
     let timeLeft = PREP_TIME;
     let currentPhase = 'IDLE';
     let timerInterval = null;
     let audioCtx = null;
 
-    // --- ระบบ Check-in ล็อกอินรายวัน (2 โหมด) ---
     function getTodayString() {
         const today = new Date();
         return today.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' });
     }
 
     function loadCheckInHistory() {
-        const history = JSON.parse(localStorage.getItem('easyfit_checkins_v2') || '[]');
+        const history = JSON.parse(localStorage.getItem('easyfit_30min_v1') || '[]');
         const todayStr = getTodayString();
         const workoutBtn = document.getElementById('checkin-workout-btn');
         const restBtn = document.getElementById('checkin-rest-btn');
@@ -450,7 +467,7 @@
             workoutBtn.disabled = true;
             restBtn.disabled = true;
             if (todayEntry.type === 'WORKOUT') {
-                status.innerText = "🔥 วันนี้มึงเช็กอิน: ออกกำลังกายแล้ว!";
+                status.innerText = "🔥 วันนี้มึงเช็กอิน: จัด 30 นาทีเต็มแล้ว!";
                 status.style.color = "var(--neon-pink)";
             } else {
                 status.innerText = "☕ วันนี้มึงเช็กอิน: วันพักผ่อนแล้ว!";
@@ -466,7 +483,7 @@
         if (history.length > 0) {
             logBox.innerHTML = "<b>ประวัติเช็กอินล่าสุด:</b><br>" + 
                 history.slice(-5).reverse().map(item => {
-                    const icon = item.type === 'WORKOUT' ? '🔥 ออกกำลังกาย' : '☕ วันพัก';
+                    const icon = item.type === 'WORKOUT' ? '🔥 30 นาที' : '☕ วันพัก';
                     return `${item.date} - ${icon}`;
                 }).join('<br>');
         } else {
@@ -476,17 +493,16 @@
 
     function doCheckIn(type) {
         const todayStr = getTodayString();
-        let history = JSON.parse(localStorage.getItem('easyfit_checkins_v2') || '[]');
+        let history = JSON.parse(localStorage.getItem('easyfit_30min_v1') || '[]');
         const existingIndex = history.findIndex(item => item.date === todayStr);
 
         if (existingIndex === -1) {
             history.push({ date: todayStr, type: type });
-            localStorage.setItem('easyfit_checkins_v2', JSON.stringify(history));
+            localStorage.setItem('easyfit_30min_v1', JSON.stringify(history));
         }
         loadCheckInHistory();
     }
 
-    // --- ระบบ Workout & Audio ---
     function initAudio() {
         if (!audioCtx) {
             audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -569,8 +585,16 @@
                         currentPhase = 'PREP';
                         timeLeft = PREP_TIME;
                     } else {
-                        completeWorkout();
-                        return;
+                        // จบรอบแล้ว เช็คว่าครบ 3 รอบยัง
+                        if (currentRound < totalRounds) {
+                            currentRound++;
+                            currentStep = 0;
+                            currentPhase = 'PREP';
+                            timeLeft = PREP_TIME;
+                        } else {
+                            completeWorkout();
+                            return;
+                        }
                     }
                 }
             }
@@ -579,7 +603,14 @@
     }
 
     function showSuccessPopup() {
-        document.getElementById('completed-move-name').innerText = `ทำ "${workoutData[currentStep].name}" เสร็จแล้ว! ✨`;
+        const isLastOfRound = (currentStep === workoutData.length - 1);
+        if (isLastOfRound && currentRound < totalRounds) {
+            document.getElementById('success-popup-title').innerText = `จบรอบที่ ${currentRound} แล้วมึง! ✨`;
+            document.getElementById('completed-move-name').innerText = `พักหายใจยาวๆ เตรียมลุยรอบที่ ${currentRound + 1}`;
+        } else {
+            document.getElementById('success-popup-title').innerText = "เก่งมากมึง! จบไปอีกท่า! 💖";
+            document.getElementById('completed-move-name').innerText = `ทำ "${workoutData[currentStep].name}" เสร็จแล้ว!`;
+        }
         document.getElementById('success-popup').style.display = 'flex';
     }
 
@@ -604,6 +635,10 @@
     function nextStep() {
         if (currentStep < workoutData.length - 1) {
             currentStep++;
+            resetToPrep();
+        } else if (currentRound < totalRounds) {
+            currentRound++;
+            currentStep = 0;
             resetToPrep();
         }
     }
@@ -635,16 +670,17 @@
     function completeWorkout() {
         clearInterval(timerInterval);
         currentPhase = 'IDLE';
-        document.getElementById('phase').innerText = "🎉 FINISH!";
+        document.getElementById('phase').innerText = "🎉 30-MIN FINISH!";
         document.getElementById('phase').style.color = "var(--neon-pink)";
-        document.getElementById('move').innerText = "เก่งมากมึง! ครบ 15 นาทีเต็ม สบายตัวสุดๆ 💖";
-        document.getElementById('instruction').innerHTML = "💡 **ภารกิจสำเร็จ:** วันนี้มึงทำได้ดีมาก ดื่มน้ำเปล่าเยอะๆ แล้วไปพักผ่อนได้เลย!";
+        document.getElementById('move').innerText = "สุดยอดมากมึง! ครบ 30 นาที หุ่นสับแน่นอน! 💖";
+        document.getElementById('instruction').innerHTML = "💡 **ภารกิจสำเร็จ:** เผาผลาญกระจาย ดื่มน้ำอุ่นแล้วไปยืดเหยียดพักผ่อนได้เลย!";
         document.getElementById('timer').innerText = "00:00";
         const btn = document.getElementById('start-btn');
         btn.innerText = "PLAY AGAIN 🔄";
         btn.style.background = "linear-gradient(135deg, var(--neon-pink), #e0115f)";
         btn.style.color = "#fff";
         currentStep = 0;
+        currentRound = 1;
         
         doCheckIn('WORKOUT');
     }
@@ -654,6 +690,9 @@
         const moveElem = document.getElementById('move');
         const graphicBox = document.getElementById('graphic-box');
         const instruction = document.getElementById('instruction');
+        const roundBadge = document.getElementById('round-badge');
+
+        roundBadge.innerText = `🏆 รอบที่ ${currentRound} / ${totalRounds} (รวม 30 นาที)`;
 
         const currentMove = workoutData[currentStep];
 
@@ -662,14 +701,18 @@
             phaseElem.style.color = "var(--yellow-prep)";
             moveElem.innerText = currentMove.name;
         } else if (currentPhase === 'WORK') {
-            phaseElem.innerText = "🔥 ลุยเลยมึง! (WORK)";
+            phaseElem.innerText = `🔥 ลุยเลยมึง! (รอบ ${currentRound})`;
             phaseElem.style.color = "var(--neon-pink)";
             moveElem.innerText = currentMove.name;
         } else if (currentPhase === 'REST') {
             phaseElem.innerText = "☕ พัก หายใจลึกๆ (REST)";
             phaseElem.style.color = "var(--green-success)";
             const nextMove = workoutData[currentStep + 1];
-            moveElem.innerText = "ท่าต่อไป: " + (nextMove ? nextMove.name : "ท่าสุดท้ายแล้ว!");
+            if (nextMove) {
+                moveElem.innerText = "ท่าต่อไป: " + nextMove.name;
+            } else {
+                moveElem.innerText = `เตรียมขึ้นรอบที่ ${currentRound + 1}!`;
+            }
         } else if (currentPhase === 'PAUSED') {
             phaseElem.innerText = "⏸️ หยุดชั่วคราว";
             phaseElem.style.color = "#fff";
@@ -682,10 +725,10 @@
 
         const sec = timeLeft < 10 ? '0' + timeLeft : timeLeft;
         document.getElementById('timer').innerText = `00:${sec}`;
-        document.getElementById('progress').innerText = `ท่าที่ ${currentStep + 1} / ${workoutData.length}`;
+        document.getElementById('progress').innerText = `ท่าที่ ${currentStep + 1} / ${workoutData.length} (รอบ ${currentRound}/${totalRounds})`;
 
-        document.getElementById('prev-btn').disabled = (currentStep === 0);
-        document.getElementById('next-btn').disabled = (currentStep === workoutData.length - 1);
+        document.getElementById('prev-btn').disabled = (currentStep === 0 && currentRound === 1);
+        document.getElementById('next-btn').disabled = (currentStep === workoutData.length - 1 && currentRound === totalRounds);
     }
 
     loadCheckInHistory();
