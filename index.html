@@ -1,739 +1,639 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>30-MIN FULL-BODY พส.จีน ✨ Pink Edition</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-black: #0c0810;
-            --card-pink: #1d1222;
-            --neon-pink: #ff2a85;
-            --light-pink: #ff80bf;
-            --soft-white: #fff0f6;
-            --text-muted: #b3889b;
-            --green-success: #00f28b;
-            --yellow-prep: #ffb700;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pastel Glow Workout 🌸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mali:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-pastel: #FFF5F9;
+      --card-bg: #FFFFFF;
+      --pink-primary: #FFB7D5;
+      --pink-dark: #FF7B9C;
+      --purple-primary: #D8B4F8;
+      --purple-dark: #A27B5C;
+      --purple-text: #6B4E71;
+      --gray-light: #F2EAF7;
+      --gray-text: #8E7C93;
+      --shadow: 0 10px 25px rgba(216, 180, 248, 0.3);
+      --radius: 24px;
+    }
 
-        body {
-            background-color: var(--bg-black);
-            color: var(--soft-white);
-            font-family: 'Mitr', sans-serif;
-            margin: 0;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 95vh;
-        }
+    * {
+      box-sizing: border-box;
+      font-family: 'Mali', cursive, sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 420px;
-            background: var(--card-pink);
-            border: 3px solid var(--neon-pink);
-            border-radius: 28px;
-            padding: 20px;
-            box-shadow: 0 0 35px rgba(255, 42, 133, 0.35);
-            text-align: center;
-            box-sizing: border-box;
-            position: relative;
-            overflow: hidden;
-        }
+    body {
+      background: linear-gradient(135deg, #FFF5F9 0%, #F3E8FF 100%);
+      color: var(--purple-text);
+      min-height: 100vh;
+      padding: 20px 12px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
 
-        h1 {
-            color: var(--neon-pink);
-            font-size: 22px;
-            margin: 0 0 4px 0;
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(255, 42, 133, 0.5);
-        }
+    .container {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 12px;
-            margin-bottom: 12px;
-        }
+    header {
+      text-align: center;
+      padding: 10px 0;
+    }
 
-        /* กล่องแสดงรอบ (Rounds) */
-        .round-badge {
-            background: rgba(255, 42, 133, 0.2);
-            border: 1px solid var(--neon-pink);
-            color: var(--light-pink);
-            font-size: 12px;
-            font-weight: 600;
-            padding: 4px 12px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
+    header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #7D4C86;
+      text-shadow: 2px 2px 0px #FFD6E8;
+    }
 
-        /* ตารางสัปดาห์ */
-        .schedule-box {
-            background: #140b19;
-            border: 1px solid var(--light-pink);
-            border-radius: 16px;
-            padding: 10px;
-            margin-bottom: 12px;
-        }
+    header p {
+      font-size: 14px;
+      color: var(--gray-text);
+      font-weight: 500;
+      margin-top: 4px;
+    }
 
-        .schedule-title {
-            font-size: 11px;
-            color: var(--light-pink);
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 3px solid #FFF;
+    }
 
-        .days-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-        }
+    /* Player Styles */
+    .player-card {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .day-item {
-            background: #23122c;
-            border-radius: 8px;
-            padding: 5px 2px;
-            font-size: 9px;
-        }
+    .status-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      background: var(--purple-primary);
+      color: white;
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+    }
 
-        .day-item.workout {
-            background: rgba(255, 42, 133, 0.25);
-            border: 1px solid var(--neon-pink);
-            color: var(--soft-white);
-        }
+    .status-badge.rest {
+      background: var(--pink-primary);
+    }
 
-        .day-item.rest {
-            background: rgba(0, 242, 139, 0.15);
-            border: 1px solid var(--green-success);
-            color: var(--green-success);
-        }
+    .exercise-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #5C3A63;
+      min-height: 30px;
+      margin-bottom: 4px;
+    }
 
-        /* ระบบเช็กอินรายวัน */
-        .checkin-box {
-            background: #09050b;
-            border: 2px solid #3d2048;
-            border-radius: 20px;
-            padding: 10px;
-            margin-bottom: 12px;
-        }
+    .exercise-desc {
+      font-size: 13px;
+      color: var(--gray-text);
+      min-height: 36px;
+      margin-bottom: 12px;
+    }
 
-        .checkin-btn-group {
-            display: flex;
-            gap: 8px;
-            margin-top: 6px;
-        }
+    .illustration-box {
+      height: 170px;
+      background: #FAF3FF;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      border: 2px dashed #E2CEF5;
+      position: relative;
+    }
 
-        .btn-checkin {
-            flex: 1;
-            border: none;
-            padding: 8px 4px;
-            font-size: 11px;
-            font-weight: 600;
-            font-family: 'Mitr', sans-serif;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+    .svg-character {
+      width: 140px;
+      height: 140px;
+      transition: all 0.3s ease;
+    }
 
-        .btn-checkin-workout {
-            background: linear-gradient(135deg, var(--neon-pink), #e0115f);
-            color: #fff;
-            box-shadow: 0 2px 10px rgba(255, 42, 133, 0.3);
-        }
+    .timer-display {
+      font-size: 48px;
+      font-weight: 700;
+      color: #6C3B75;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
 
-        .btn-checkin-rest {
-            background: linear-gradient(135deg, var(--green-success), #00b366);
-            color: #000;
-            box-shadow: 0 2px 10px rgba(0, 242, 139, 0.3);
-        }
+    .step-indicator {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--pink-dark);
+      margin-bottom: 16px;
+    }
 
-        .btn-checkin:disabled {
-            background: #2b1735 !important;
-            color: var(--text-muted) !important;
-            box-shadow: none !important;
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      align-items: center;
+    }
 
-        .checkin-log {
-            font-size: 10px;
-            color: var(--text-muted);
-            margin-top: 6px;
-            max-height: 50px;
-            overflow-y: auto;
-            text-align: left;
-            background: #140a1a;
-            padding: 6px 8px;
-            border-radius: 8px;
-        }
+    .btn {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-weight: 700;
+      border-radius: 16px;
+      transition: transform 0.1s ease, background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .status-box {
-            background: #09050b;
-            border: 2px solid #3d2048;
-            border-radius: 20px;
-            padding: 14px;
-            margin-bottom: 12px;
-        }
+    .btn:active {
+      transform: scale(0.94);
+    }
 
-        .phase-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--light-pink);
-        }
+    .btn-main {
+      background: linear-gradient(135deg, #FFB7D5 0%, #D8B4F8 100%);
+      color: white;
+      padding: 12px 28px;
+      font-size: 18px;
+      box-shadow: 0 4px 12px rgba(255, 183, 213, 0.5);
+      min-width: 120px;
+    }
 
-        .move-name {
-            font-size: 16px;
-            color: var(--neon-pink);
-            font-weight: 700;
-            margin: 6px 0;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .btn-sub {
+      background: var(--gray-light);
+      color: var(--purple-text);
+      padding: 12px;
+      font-size: 16px;
+      width: 46px;
+      height: 46px;
+    }
 
-        .illustration-box {
-            height: 90px;
-            background: #150a1b;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 8px 0;
-            border: 1px dashed var(--neon-pink);
-        }
+    /* Calendar Styles */
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
 
-        .illustration-box svg {
-            width: 70px;
-            height: 70px;
-            fill: var(--light-pink);
-        }
+    .calendar-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #5C3A63;
+    }
 
-        .instruction-card {
-            background: rgba(255, 42, 133, 0.1);
-            border-left: 4px solid var(--neon-pink);
-            border-radius: 8px;
-            padding: 8px 10px;
-            font-size: 11px;
-            color: var(--soft-white);
-            margin-bottom: 8px;
-            text-align: left;
-            line-height: 1.4;
-        }
+    .month-picker {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--purple-text);
+      background: var(--gray-light);
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
 
-        .timer-display {
-            font-size: 48px;
-            font-weight: 700;
-            font-family: 'Mitr', monospace;
-            color: #fff;
-            margin: 0;
-            line-height: 1;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-        }
+    .weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--gray-text);
+      margin-bottom: 8px;
+    }
 
-        .progress-text {
-            color: var(--text-muted);
-            font-size: 11px;
-            margin-top: 5px;
-        }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
 
-        .btn {
-            background: linear-gradient(135deg, var(--neon-pink), #e0115f);
-            color: #fff;
-            border: none;
-            padding: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            font-family: 'Mitr', sans-serif;
-            border-radius: 16px;
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.1s;
-            box-shadow: 0 4px 20px rgba(255, 42, 133, 0.5);
-        }
+    .day-cell {
+      aspect-ratio: 1;
+      border-radius: 14px;
+      background: #FAF7FC;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      position: relative;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+    }
 
-        .btn:active { transform: scale(0.96); }
+    .day-cell.today {
+      border-color: var(--purple-primary);
+    }
 
-        .btn-nav {
-            background-color: #2b1735;
-            border: 1px solid #4a275b;
-            color: var(--light-pink);
-            padding: 8px;
-            font-size: 11px;
-            font-family: 'Mitr', sans-serif;
-            border-radius: 12px;
-            cursor: pointer;
-            flex: 1;
-            transition: 0.2s;
-        }
+    .day-cell .status-icon {
+      font-size: 14px;
+      margin-top: 2px;
+    }
 
-        .btn-nav:hover { background-color: #3b2048; }
-        .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+    .day-cell[data-status="done"] {
+      background: #FFE4EF;
+      color: #D81B60;
+    }
 
-        .nav-group {
-            display: flex;
-            gap: 6px;
-            margin-top: 8px;
-        }
+    .day-cell[data-status="rest"] {
+      background: #E8DDFF;
+      color: #5E35B1;
+    }
 
-        .success-overlay {
-            display: none;
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(12, 8, 16, 0.96);
-            border-radius: 26px;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            z-index: 10;
-        }
+    .day-cell[data-status="missed"] {
+      background: #F0F0F0;
+      color: #9E9E9E;
+    }
 
-        .check-icon {
-            font-size: 60px;
-            animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+    .legend {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed #EADBF0;
+      font-size: 11px;
+      font-weight: 700;
+    }
 
-        @keyframes pop {
-            0% { transform: scale(0); }
-            100% { transform: scale(1); }
-        }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
 
-        .success-title {
-            color: var(--green-success);
-            font-size: 20px;
-            font-weight: 700;
-            margin: 8px 0 4px 0;
-        }
+    /* List Card */
+    .list-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #5C3A63;
+      margin-bottom: 12px;
+    }
 
-        .success-desc {
-            color: #fff;
-            font-size: 13px;
-            margin-bottom: 16px;
-        }
-    </style>
+    .workout-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .workout-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: #FAF7FC;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .workout-item.active {
+      background: #F3E5F5;
+      border-left: 4px solid var(--purple-primary);
+    }
+
+    .workout-item span.duration {
+      font-size: 11px;
+      color: var(--gray-text);
+      background: #FFF;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    .anim-work {
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>🇨🇳 30-MIN พส.จีน ฟิตหุ่นสับ 🇨🇳</h1>
-    <div class="subtitle">30 นาทีเต็ม ลดทุกส่วน เซฟเข่า สไตล์สาวโต่วอิน!</div>
+  <div class="container">
+    <header>
+      <h1>🌸 Chinese Sister Glow 🌸</h1>
+      <p>15 นาที สไตล์พี่สาวจีน • เอวคอด ขากระชับ ไร้เวียนหัว</p>
+    </header>
 
-    <div class="round-badge" id="round-badge">🏆 รอบที่ 1 / 3 (รวม 30 นาที)</div>
+    <!-- WORKOUT PLAYER -->
+    <div class="card player-card">
+      <div id="statusBadge" class="status-badge">พร้อมแล้วเริ่มกันเลย!</div>
+      <div id="exerciseTitle" class="exercise-title">เตรียมตัวเข้าสู่โปรแกรม</div>
+      <div id="exerciseDesc" class="exercise-desc">กดปุ่มเริ่มเล่นเพื่อเริ่มยืดเส้นและออกกำลังกาย</div>
 
-    <!-- ตารางวันพัก/ออกกำลังกาย -->
-    <div class="schedule-box">
-        <div class="schedule-title">📅 ตาราง 30 นาที (4 วันลุย / 3 วันพัก)</div>
-        <div class="days-grid">
-            <div class="day-item workout">จ.<br>🔥 30น.</div>
-            <div class="day-item workout">อ.<br>🔥 30น.</div>
-            <div class="day-item rest">พ.<br>☕ พัก</div>
-            <div class="day-item workout">พฤ.<br>🔥 30น.</div>
-            <div class="day-item workout">ศ.<br>🔥 30น.</div>
-            <div class="day-item rest">ส.<br>☕ พัก</div>
-            <div class="day-item rest">อา.<br>☕ พัก</div>
-        </div>
+      <div class="illustration-box">
+        <svg class="svg-character" id="svgGraphic" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="40" fill="#FFB7D5" opacity="0.4" />
+          <circle cx="50" cy="30" r="14" fill="#6B4E71" />
+          <path d="M 35 75 Q 50 45 65 75 Z" fill="#D8B4F8" />
+          <circle cx="50" cy="32" r="11" fill="#FFE0BD" />
+          <circle cx="46" cy="31" r="1.5" fill="#333" />
+          <circle cx="54" cy="31" r="1.5" fill="#333" />
+          <path d="M 47 36 Q 50 39 53 36" stroke="#FF7B9C" stroke-width="1.5" fill="none" />
+        </svg>
+      </div>
+
+      <div id="timerDisplay" class="timer-display">00:45</div>
+      <div id="stepIndicator" class="step-indicator">ท่าที่ 0 / 10</div>
+
+      <div class="controls">
+        <button class="btn btn-sub" onclick="prevExercise()" title="ย้อนท่า">⏮️</button>
+        <button id="mainBtn" class="btn btn-main" onclick="toggleTimer()">เริ่มเลอ!</button>
+        <button class="btn btn-sub" onclick="nextExercise()" title="ข้ามท่า">⏭️</button>
+        <button class="btn btn-sub" onclick="resetWorkout()" title="เริ่มใหม่">🔄</button>
+      </div>
     </div>
 
-    <!-- ระบบเช็กชื่อรายวัน -->
-    <div class="checkin-box">
-        <div id="checkin-status" style="font-size: 11px; font-weight: 600;">📌 ล็อกอินเช็กชื่อวันนี้</div>
-        <div class="checkin-btn-group">
-            <button class="btn-checkin btn-checkin-workout" id="checkin-workout-btn" onclick="doCheckIn('WORKOUT')">🏋️‍♀️ ออกกำลังกาย 30น.</button>
-            <button class="btn-checkin btn-checkin-rest" id="checkin-rest-btn" onclick="doCheckIn('REST')">☕ วันพักผ่อน</button>
-        </div>
-        <div class="checkin-log" id="checkin-log">ประวัติการเข้าใช้งาน: -</div>
+    <!-- CALENDAR CHECK-IN -->
+    <div class="card">
+      <div class="calendar-header">
+        <div class="calendar-title">🗓️ ตารางเช็กอินมินิเกม</div>
+        <div id="currentMonth" class="month-picker">พฤศจิกายน</div>
+      </div>
+
+      <div class="weekdays">
+        <div>อา</div><div>จ</div><div>อ</div><div>พ</div><div>พฤ</div><div>ศ</div><div>ส</div>
+      </div>
+
+      <div id="calendarGrid" class="calendar-grid"></div>
+
+      <div class="legend">
+        <div class="legend-item"><span>✨</span> ออกแล้ว</div>
+        <div class="legend-item"><span>🌸</span> วันพัก</div>
+        <div class="legend-item"><span>💤</span> ขี้เกียจ/โดน</div>
+      </div>
     </div>
 
-    <div class="status-box">
-        <div class="phase-title" id="phase">พร้อมยังมึง? ✨</div>
-        <div class="move-name" id="move">กด START เพื่อลุย 30 นาที!</div>
-        
-        <div class="illustration-box" id="graphic-box">
-            <span style="font-size: 35px;">🇨🇳💃</span>
-        </div>
-
-        <div class="instruction-card" id="instruction">
-            👉 **วิธีเล่น:** 10 ท่าฮิต พัก 15 วิ ลุย 45 วิ วนไป 3 รอบเต็มๆ จบครบ 30 นาที!
-        </div>
-
-        <div class="timer-display" id="timer">00:15</div>
-        <div class="progress-text" id="progress">ท่าที่ 1 / 10 (รอบ 1)</div>
+    <!-- WORKOUT LIST -->
+    <div class="card">
+      <div class="list-title">📋 10 ท่าปังๆ 15 นาทีจบ!</div>
+      <div id="workoutList" class="workout-list"></div>
     </div>
+  </div>
 
-    <button class="btn" id="start-btn" onclick="toggleWorkout()">START 30-MIN WORKOUT 🚀</button>
-
-    <div class="nav-group">
-        <button class="btn-nav" id="prev-btn" onclick="prevStep()">⏮️ ย้อนกลับ</button>
-        <button class="btn-nav" onclick="resetCurrentTimer()">🔄 นับใหม่</button>
-        <button class="btn-nav" id="next-btn" onclick="nextStep()">ข้ามท่า ⏭️</button>
-    </div>
-
-    <div class="success-overlay" id="success-popup">
-        <div class="check-icon">🐼</div>
-        <div class="success-title" id="success-popup-title">เก่งมากมึง! จบรอบนี้แล้ว!</div>
-        <div class="success-desc" id="completed-move-name">พักหายใจแป๊บ ลุยต่อท่าต่อไป! 🎉</div>
-        <button class="btn" style="background: var(--green-success); color: #000;" onclick="closeSuccessPopup()">ลุยต่อเลยมึง! 💖</button>
-    </div>
-</div>
-
-<script>
-    const workoutData = [
-        {
-            name: "1. Standing Side Leg Raises 🦵",
-            desc: "💡 **วิธีทำ:** ยืนตรง เอามือจับพนักเก้าอี้ เตะขาออกด้านข้างช้าๆ เกร็งสะโพก ทำสลับข้าง<br>✨ **เป้าหมาย:** ลดต้นขาด้านนอก ปั้นสะโพกทรง พส.จีน เซฟเข่า 100%",
-            icon: `<svg viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.8l1.8-.9z"/></svg>`
-        },
-        {
-            name: "2. Standing Bicycle Crunches 🚲",
-            desc: "💡 **วิธีทำ:** ยืนตรง มือแตะหลังหู ยกเข่าขึ้นเบาๆ บิดศอกชนเข่าสลับซ้ายขวา<br>✨ **เป้าหมาย:** สร้างเอวสอย (S-Line) และเบิร์นหน้าท้องส่วนล่าง",
-            icon: `<svg viewBox="0 0 24 24"><path d="M15 5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-2.8 10.3l1.8-4.3 2 2v6h2v-7l-2.6-2.6.8-4C17.5 10.2 19 11 21 11V9c-1.6 0-2.8-.7-3.6-1.8l-1-1.5c-.3-.5-.9-.7-1.4-.7-.3 0-.6.1-.9.2L9 7.8V13h2V9.5l2.2-1.2-1.3 6.8-2.7-2.7-1.4 1.4 3.4 3.5z"/></svg>`
-        },
-        {
-            name: "3. Shadow Boxing & Core Twist 🥊",
-            desc: "💡 **วิธีทำ:** ย่อเข่านิดนึง รัวหมัดชกสลับซ้ายขวาพร้อมบิดลำตัวช่วงบนเร็วๆ<br>✨ **เป้าหมาย:** เบิร์นไขมันช่วงแขน ไหล่ และกระชับหน้าท้องรอบด้าน",
-            icon: `<svg viewBox="0 0 24 24"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.67 12.33 2 11.5 2S10 2.67 10 3.5V5H6c-1.1 0-2 .9-2 2v4H2.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5H4v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4h1.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>`
-        },
-        {
-            name: "4. Good Mornings (Hinge) 🙇‍♀️",
-            desc: "💡 **วิธีทำ:** มือแตะหลังหู ยืนตรง พับสะโพกไปด้านหลัง ก้มตัวตรงๆ แล้วดันก้นกลับ<br>✨ **เป้าหมาย:** กระชับก้นและแฮมสตริง ทำให้ขาเรียวยาวสวย",
-            icon: `<svg viewBox="0 0 24 24"><path d="M12 5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm1 14v-6h3v-2h-5v5h-2v5h4z"/></svg>`
-        },
-        {
-            name: "5. Sumo Squat Pulse (No Jump) 🔻",
-            desc: "💡 **วิธีทำ:** กางขาออกกว้าง ปลายเท้าชี้ออก ย่อตัวลงค้างไว้แล้วโยกตัวขึ้นลงเบาๆ<br>✨ **เป้าหมาย:** กำจัดขาเบียด ต้นขาด้านในกระชับเข้ารูป",
-            icon: `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>`
-        },
-        {
-            name: "6. Arm Circle & Chest Fly 🦋",
-            desc: "💡 **วิธีทำ:** กางแขนหมุนวงกลมเล็กๆ สลับกับหุบแขนเข้าหากันหนีบอกแน่นๆ<br>✨ **เป้าหมาย:** กำจัดไขมันปีกหลัง เนื้อใต้แขน และกระชับหน้าอก",
-            icon: `<svg viewBox="0 0 24 24"><path d="M7.5 4.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v1.09c1.78.36 3.1 1.93 3.1 3.81V18c0 1.1-.9 2-2 2h-5c-1.1 0-2-.9-2-2V9.4c0-1.88 1.32-3.45 3.1-3.81V4.5zM16.5 4.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v1.09c1.78.36 3.1 1.93 3.1 3.81V18c0 1.1-.9 2-2 2h-5c-1.1 0-2-.9-2-2V9.4c0-1.88 1.32-3.45 3.1-3.81V4.5z"/></svg>`
-        },
-        {
-            name: "7. Standing Knee to Chest Lift 🦿",
-            desc: "💡 **วิธีทำ:** ยืนตัวตรง ยกเข่าขึ้นสูงระดับอกสลับซ้ายขวาเกร็งหน้าท้องทุกครั้งที่ยก<br>✨ **เป้าหมาย:** รีดไขมันหน้าท้องส่วนล่างแบบเร่งด่วน",
-            icon: `<svg viewBox="0 0 24 24"><path d="M19 15c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm2-4h10v2H7z"/></svg>`
-        },
-        {
-            name: "8. Standing Oblique Crunches 💃",
-            desc: "💡 **วิธีทำ:** ยืนกางขาเล็กน้อย เอามือแตะหัว แล้วเอียงลำตัวด้านข้างให้ศอกแตะสะโพก<br>✨ **เป้าหมาย:** เก็บเอวห่วงยางข้างลำตัวให้ยุบไว",
-            icon: `<svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19H12c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/></svg>`
-        },
-        {
-            name: "9. Glute Bridge & Squeeze 🍑",
-            desc: "💡 **วิธีทำ:** นอนหงาย ชันเข่า ยกสะโพกขึ้นฟ้า เกร็งก้นแน่นๆ 2 วินาทีแล้ววางลง<br>✨ **เป้าหมาย:** ปั้นก้นกลมเด้ง ขาเฟิร์ม ไม่ปวดหลัง",
-            icon: `<svg viewBox="0 0 24 24"><path d="M19 15c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm2-4h10v2H7z"/></svg>`
-        },
-        {
-            name: "10. Wall Sit Hold 🧱",
-            desc: "💡 **วิธีทำ:** พิงหลังติดกำแพง ย่อตัวลงเล็กน้อย เกร็งค้างไว้ หายใจเข้าออกลึกๆ<br>✨ **เป้าหมาย:** เบิร์นพลังงานและเสริมความแข็งแรงกล้ามเนื้อขา",
-            icon: `<svg viewBox="0 0 24 24"><path d="M12 5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm1 14v-6h3v-2h-5v5h-2v5h4z"/></svg>`
-        }
+  <script>
+    // 10 Low-Impact Workouts tailored for waist & thight fat loss (No dizziness, knee safe)
+    const exercises = [
+      { name: "1. ยืดแขนบิดเอว (Standing Waist Twist)", time: 45, rest: 15, desc: "ยืนตรง บิดลำตัวซ้าย-ขวา ช้าๆ เกร็งหน้าท้อง เน้นกระชับเอวเอส", svg: 'waist' },
+      { name: "2. วาดแขนยกเข่าเฉียง (Side Knee Drive)", time: 45, rest: 15, desc: "ดึงเข่าขึ้นหาข้อศอกด้านข้างทีละข้าง ลดไขมันห่วงยางข้างลำตัว", svg: 'knee' },
+      { name: "3. ผลักมือข้างลำตัว (Side Arm Reach)", time: 45, rest: 15, desc: "เอียงตัวไปข้างๆ ยืดแขนไปสุด เกร็งท้องด้านข้าง ถนอมเข่า 100%", svg: 'reach' },
+      { name: "4. ยืนเตะขาไปข้างหลัง (Glute Kickback)", time: 45, rest: 15, desc: "ยืนตรง หนีบก้น เตะขาไปข้างหลังสลับซ้าย-ขวา ช่วยยกกระชับสะโพก", svg: 'kick' },
+      { name: "5. ชูมือแตะปลายเท้า (Standing Toe Touch)", time: 45, rest: 15, desc: "ยกขาขึ้นด้านหน้าแตะมือ ไม่ก้มหัวต่ำ ป้องกันอาการเวียนหัว", svg: 'toe' },
+      { name: "6. หมุนสะโพกเอวคอด (Hip Circle)", time: 45, rest: 15, desc: "หมุนสะโพกเป็นวงกลม เกร็งหน้าท้อง สไตล์พี่สาวจีนคลายกล้ามเนื้อ", svg: 'circle' },
+      { name: "7. เตะขาออกข้าง (Standing Side Leg Lift)", time: 45, rest: 15, desc: "ยกขาออกด้านข้างสลับซ้ายขวา ลดไขมันต้นขาด้านนอกเน้นๆ", svg: 'side' },
+      { name: "8. ยืนต่อยลมบิดตัว (Standing Cross Punch)", time: 45, rest: 15, desc: "ต่อยลมไปทิศตรงข้าม พร้อมบิดลำตัว เผาผลาญไขมันทั้งตัว", svg: 'punch' },
+      { name: "9. วาดแขนวงกลมกระชับต้นแขน (Arm Circles)", time: 45, rest: 15, desc: "กางแขนออกข้าง หมุนเป็นวงกลมเล็กๆ ลดไขมันส่วนหลังและแขน", svg: 'arms' },
+      { name: "10. คูลดาวน์ยืดตัว (Pastel Stretch)", time: 45, rest: 15, desc: "หายใจเข้าลึกๆ ยืดตัวขึ้นสุด คลายกล้ามเนื้อเตรียมปิดเกม!", svg: 'stretch' }
     ];
 
-    const WORK_TIME = 45;
-    const REST_TIME = 15;
-    const PREP_TIME = 10;
+    let currentIdx = 0;
+    let isWorking = true;
+    let isRunning = false;
+    let timer = null;
+    let timeLeft = exercises[0].time;
+    let checkInState = JSON.parse(localStorage.getItem('workout_checkin_data')) || {};
 
-    let currentStep = 0;
-    let currentRound = 1;
-    const totalRounds = 3;
-    let timeLeft = PREP_TIME;
-    let currentPhase = 'IDLE';
-    let timerInterval = null;
-    let audioCtx = null;
-
-    function getTodayString() {
-        const today = new Date();
-        return today.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' });
-    }
-
-    function loadCheckInHistory() {
-        const history = JSON.parse(localStorage.getItem('easyfit_30min_v1') || '[]');
-        const todayStr = getTodayString();
-        const workoutBtn = document.getElementById('checkin-workout-btn');
-        const restBtn = document.getElementById('checkin-rest-btn');
-        const status = document.getElementById('checkin-status');
-        const logBox = document.getElementById('checkin-log');
-
-        const todayEntry = history.find(item => item.date === todayStr);
-
-        if (todayEntry) {
-            workoutBtn.disabled = true;
-            restBtn.disabled = true;
-            if (todayEntry.type === 'WORKOUT') {
-                status.innerText = "🔥 วันนี้มึงเช็กอิน: จัด 30 นาทีเต็มแล้ว!";
-                status.style.color = "var(--neon-pink)";
-            } else {
-                status.innerText = "☕ วันนี้มึงเช็กอิน: วันพักผ่อนแล้ว!";
-                status.style.color = "var(--green-success)";
-            }
-        } else {
-            workoutBtn.disabled = false;
-            restBtn.disabled = false;
-            status.innerText = "📌 วันนี้ยังไม่ได้เช็กชื่อ กดเลือกโหมดได้เลยมึง!";
-            status.style.color = "var(--yellow-prep)";
-        }
-
-        if (history.length > 0) {
-            logBox.innerHTML = "<b>ประวัติเช็กอินล่าสุด:</b><br>" + 
-                history.slice(-5).reverse().map(item => {
-                    const icon = item.type === 'WORKOUT' ? '🔥 30 นาที' : '☕ วันพัก';
-                    return `${item.date} - ${icon}`;
-                }).join('<br>');
-        } else {
-            logBox.innerHTML = "ประวัติการเข้าใช้งาน: ยังไม่มีข้อมูล";
-        }
-    }
-
-    function doCheckIn(type) {
-        const todayStr = getTodayString();
-        let history = JSON.parse(localStorage.getItem('easyfit_30min_v1') || '[]');
-        const existingIndex = history.findIndex(item => item.date === todayStr);
-
-        if (existingIndex === -1) {
-            history.push({ date: todayStr, type: type });
-            localStorage.setItem('easyfit_30min_v1', JSON.stringify(history));
-        }
-        loadCheckInHistory();
-    }
-
-    function initAudio() {
-        if (!audioCtx) {
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-        if (audioCtx.state === 'suspended') {
-            audioCtx.resume();
-        }
-    }
-
-    function playSound(freq, type, duration) {
-        try {
-            initAudio();
-            if (!audioCtx) return;
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.type = type;
-            osc.frequency.value = freq;
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.start();
-            gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
-            osc.stop(audioCtx.currentTime + duration);
-        } catch(e) {
-            console.log("Audio Error:", e);
-        }
-    }
-
-    function triggerVibrate() {
-        if ("vibrate" in navigator) {
-            navigator.vibrate([300, 100, 300, 100, 400]);
-        }
-    }
-
-    function toggleWorkout() {
-        initAudio();
-        if (currentPhase === 'IDLE' || currentPhase === 'PAUSED') {
-            startWorkout();
-        } else {
-            pauseWorkout();
-        }
-    }
-
-    function startWorkout() {
-        if (currentPhase === 'IDLE') {
-            currentPhase = 'PREP';
-            timeLeft = PREP_TIME;
-        } else if (currentPhase === 'PAUSED') {
-            currentPhase = window.lastPhase || 'WORK';
-        }
-
-        const btn = document.getElementById('start-btn');
-        btn.innerText = "PAUSE ⏸️";
-        btn.style.background = "#fff";
-        btn.style.color = "#000";
-
-        updateUI();
-
-        clearInterval(timerInterval);
-        timerInterval = setInterval(() => {
-            timeLeft--;
-
-            if (timeLeft <= 3 && timeLeft > 0) {
-                playSound(600, 'sine', 0.15);
-            }
-
-            if (timeLeft < 0) {
-                triggerVibrate();
-                playSound(880, 'square', 0.4);
-
-                if (currentPhase === 'PREP') {
-                    currentPhase = 'WORK';
-                    timeLeft = WORK_TIME;
-                } else if (currentPhase === 'WORK') {
-                    pauseWorkout();
-                    showSuccessPopup();
-                    return;
-                } else if (currentPhase === 'REST') {
-                    if (currentStep < workoutData.length - 1) {
-                        currentStep++;
-                        currentPhase = 'PREP';
-                        timeLeft = PREP_TIME;
-                    } else {
-                        // จบรอบแล้ว เช็คว่าครบ 3 รอบยัง
-                        if (currentRound < totalRounds) {
-                            currentRound++;
-                            currentStep = 0;
-                            currentPhase = 'PREP';
-                            timeLeft = PREP_TIME;
-                        } else {
-                            completeWorkout();
-                            return;
-                        }
-                    }
-                }
-            }
-            updateUI();
-        }, 1000);
-    }
-
-    function showSuccessPopup() {
-        const isLastOfRound = (currentStep === workoutData.length - 1);
-        if (isLastOfRound && currentRound < totalRounds) {
-            document.getElementById('success-popup-title').innerText = `จบรอบที่ ${currentRound} แล้วมึง! ✨`;
-            document.getElementById('completed-move-name').innerText = `พักหายใจยาวๆ เตรียมลุยรอบที่ ${currentRound + 1}`;
-        } else {
-            document.getElementById('success-popup-title').innerText = "เก่งมากมึง! จบไปอีกท่า! 💖";
-            document.getElementById('completed-move-name').innerText = `ทำ "${workoutData[currentStep].name}" เสร็จแล้ว!`;
-        }
-        document.getElementById('success-popup').style.display = 'flex';
-    }
-
-    function closeSuccessPopup() {
-        document.getElementById('success-popup').style.display = 'none';
-        currentPhase = 'REST';
-        timeLeft = REST_TIME;
-        startWorkout();
-    }
-
-    function pauseWorkout() {
-        window.lastPhase = currentPhase;
-        currentPhase = 'PAUSED';
-        clearInterval(timerInterval);
-        const btn = document.getElementById('start-btn');
-        btn.innerText = "RESUME ▶️";
-        btn.style.background = "linear-gradient(135deg, var(--neon-pink), #e0115f)";
-        btn.style.color = "#fff";
-        updateUI();
-    }
-
-    function nextStep() {
-        if (currentStep < workoutData.length - 1) {
-            currentStep++;
-            resetToPrep();
-        } else if (currentRound < totalRounds) {
-            currentRound++;
-            currentStep = 0;
-            resetToPrep();
-        }
-    }
-
-    function prevStep() {
-        if (currentStep > 0) {
-            currentStep--;
-            resetToPrep();
-        }
-    }
-
-    function resetCurrentTimer() {
-        resetToPrep();
-    }
-
-    function resetToPrep() {
-        clearInterval(timerInterval);
-        currentPhase = 'PREP';
-        timeLeft = PREP_TIME;
-        document.getElementById('success-popup').style.display = 'none';
-        const btn = document.getElementById('start-btn');
-        if (btn.innerText.includes("PAUSE")) {
-            startWorkout();
-        } else {
-            updateUI();
-        }
-    }
-
-    function completeWorkout() {
-        clearInterval(timerInterval);
-        currentPhase = 'IDLE';
-        document.getElementById('phase').innerText = "🎉 30-MIN FINISH!";
-        document.getElementById('phase').style.color = "var(--neon-pink)";
-        document.getElementById('move').innerText = "สุดยอดมากมึง! ครบ 30 นาที หุ่นสับแน่นอน! 💖";
-        document.getElementById('instruction').innerHTML = "💡 **ภารกิจสำเร็จ:** เผาผลาญกระจาย ดื่มน้ำอุ่นแล้วไปยืดเหยียดพักผ่อนได้เลย!";
-        document.getElementById('timer').innerText = "00:00";
-        const btn = document.getElementById('start-btn');
-        btn.innerText = "PLAY AGAIN 🔄";
-        btn.style.background = "linear-gradient(135deg, var(--neon-pink), #e0115f)";
-        btn.style.color = "#fff";
-        currentStep = 0;
-        currentRound = 1;
-        
-        doCheckIn('WORKOUT');
+    // Audio effects using Web Audio API
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playBeep(freq = 600, duration = 0.15) {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
     }
 
     function updateUI() {
-        const phaseElem = document.getElementById('phase');
-        const moveElem = document.getElementById('move');
-        const graphicBox = document.getElementById('graphic-box');
-        const instruction = document.getElementById('instruction');
-        const roundBadge = document.getElementById('round-badge');
+      const ex = exercises[currentIdx];
+      const statusBadge = document.getElementById("statusBadge");
+      const graphic = document.getElementById("svgGraphic");
 
-        roundBadge.innerText = `🏆 รอบที่ ${currentRound} / ${totalRounds} (รวม 30 นาที)`;
+      if (isWorking) {
+        statusBadge.textContent = "🔥 ลุยเลย! (Work)";
+        statusBadge.className = "status-badge";
+        document.getElementById("exerciseTitle").textContent = ex.name;
+        document.getElementById("exerciseDesc").textContent = ex.desc;
+        graphic.parentElement.classList.add("anim-work");
+      } else {
+        statusBadge.textContent = "🌸 พักแป๊บนะ (Rest)";
+        statusBadge.className = "status-badge rest";
+        document.getElementById("exerciseTitle").textContent = "พักผ่อน หายใจเข้าลึกๆ";
+        document.getElementById("exerciseDesc").textContent = "เตรียมตัวพบกับท่าถัดไป: " + (exercises[currentIdx + 1]?.name || "เสร็จสิ้น!");
+        graphic.parentElement.classList.remove("anim-work");
+      }
 
-        const currentMove = workoutData[currentStep];
-
-        if (currentPhase === 'PREP') {
-            phaseElem.innerText = "⏳ เตรียมตัวเข้าตำแหน่ง!";
-            phaseElem.style.color = "var(--yellow-prep)";
-            moveElem.innerText = currentMove.name;
-        } else if (currentPhase === 'WORK') {
-            phaseElem.innerText = `🔥 ลุยเลยมึง! (รอบ ${currentRound})`;
-            phaseElem.style.color = "var(--neon-pink)";
-            moveElem.innerText = currentMove.name;
-        } else if (currentPhase === 'REST') {
-            phaseElem.innerText = "☕ พัก หายใจลึกๆ (REST)";
-            phaseElem.style.color = "var(--green-success)";
-            const nextMove = workoutData[currentStep + 1];
-            if (nextMove) {
-                moveElem.innerText = "ท่าต่อไป: " + nextMove.name;
-            } else {
-                moveElem.innerText = `เตรียมขึ้นรอบที่ ${currentRound + 1}!`;
-            }
-        } else if (currentPhase === 'PAUSED') {
-            phaseElem.innerText = "⏸️ หยุดชั่วคราว";
-            phaseElem.style.color = "#fff";
-        }
-
-        if (currentPhase !== 'IDLE') {
-            graphicBox.innerHTML = currentMove.icon;
-            instruction.innerHTML = currentMove.desc;
-        }
-
-        const sec = timeLeft < 10 ? '0' + timeLeft : timeLeft;
-        document.getElementById('timer').innerText = `00:${sec}`;
-        document.getElementById('progress').innerText = `ท่าที่ ${currentStep + 1} / ${workoutData.length} (รอบ ${currentRound}/${totalRounds})`;
-
-        document.getElementById('prev-btn').disabled = (currentStep === 0 && currentRound === 1);
-        document.getElementById('next-btn').disabled = (currentStep === workoutData.length - 1 && currentRound === totalRounds);
+      document.getElementById("stepIndicator").textContent = `ท่าที่ ${currentIdx + 1} / ${exercises.length}`;
+      document.getElementById("timerDisplay").textContent = formatTime(timeLeft);
+      renderWorkoutList();
+      updateSVG(ex.svg);
     }
 
-    loadCheckInHistory();
-    updateUI();
-</script>
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60).toString().padStart(2, '0');
+      const s = (sec % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
 
+    function toggleTimer() {
+      const btn = document.getElementById("mainBtn");
+      if (isRunning) {
+        clearInterval(timer);
+        isRunning = false;
+        btn.textContent = "ลุยต่อ!";
+      } else {
+        isRunning = true;
+        btn.textContent = "หยุดพัก";
+        timer = setInterval(tick, 1000);
+      }
+    }
+
+    function tick() {
+      if (timeLeft > 1) {
+        timeLeft--;
+        if (timeLeft <= 3) playBeep(700, 0.1);
+      } else {
+        playBeep(1000, 0.3);
+        if (isWorking) {
+          isWorking = false;
+          timeLeft = exercises[currentIdx].rest;
+        } else {
+          isWorking = true;
+          if (currentIdx < exercises.length - 1) {
+            currentIdx++;
+            timeLeft = exercises[currentIdx].time;
+          } else {
+            completeWorkout();
+            return;
+          }
+        }
+      }
+      updateUI();
+    }
+
+    function nextExercise() {
+      if (currentIdx < exercises.length - 1) {
+        currentIdx++;
+        isWorking = true;
+        timeLeft = exercises[currentIdx].time;
+        updateUI();
+      }
+    }
+
+    function prevExercise() {
+      if (currentIdx > 0) {
+        currentIdx--;
+        isWorking = true;
+        timeLeft = exercises[currentIdx].time;
+        updateUI();
+      }
+    }
+
+    function resetWorkout() {
+      clearInterval(timer);
+      isRunning = false;
+      currentIdx = 0;
+      isWorking = true;
+      timeLeft = exercises[0].time;
+      document.getElementById("mainBtn").textContent = "เริ่มเลอ!";
+      updateUI();
+    }
+
+    function completeWorkout() {
+      clearInterval(timer);
+      isRunning = false;
+      document.getElementById("statusBadge").textContent = "🎉 สำเร็จแล้ว เก่งมาก!";
+      document.getElementById("exerciseTitle").textContent = "เสร็จสิ้นภารกิจ 15 นาที!";
+      document.getElementById("exerciseDesc").textContent = "ระบบทำการเช็กอินให้คุณอัตโนมัติเรียบร้อยแล้ว ❤️";
+      document.getElementById("mainBtn").textContent = "เล่นอีกครั้ง";
+
+      // Auto check-in today
+      const todayKey = getTodayKey();
+      checkInState[todayKey] = 'done';
+      localStorage.setItem('workout_checkin_data', JSON.stringify(checkInState));
+      renderCalendar();
+    }
+
+    function getTodayKey() {
+      const d = new Date();
+      return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    }
+
+    // Dynamic SVG Graphic Swap
+    function updateSVG(type) {
+      const svg = document.getElementById("svgGraphic");
+      let pathContent = `<circle cx="50" cy="50" r="38" fill="#FFB7D5" opacity="0.3"/>`;
+      pathContent += `<circle cx="50" cy="28" r="12" fill="#6B4E71"/>
+                      <circle cx="50" cy="30" r="10" fill="#FFE0BD"/>
+                      <circle cx="46" cy="29" r="1.5" fill="#333"/>
+                      <circle cx="54" cy="29" r="1.5" fill="#333"/>
+                      <path d="M 47 34 Q 50 37 53 34" stroke="#FF7B9C" stroke-width="1.5" fill="none"/>`;
+
+      if (type === 'waist' || type === 'circle') {
+        pathContent += `<path d="M 40 45 Q 50 40 60 45 L 56 75 L 44 75 Z" fill="#D8B4F8"/>
+                        <path d="M 30 50 Q 50 65 70 50" stroke="#FF7B9C" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      } else if (type === 'knee' || type === 'side') {
+        pathContent += `<path d="M 42 45 L 58 45 L 54 68 L 46 68 Z" fill="#D8B4F8"/>
+                        <line x1="56" y1="68" x2="72" y2="52" stroke="#6B4E71" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="44" y1="68" x2="44" y2="88" stroke="#6B4E71" stroke-width="6" stroke-linecap="round"/>`;
+      } else {
+        pathContent += `<path d="M 42 45 L 58 45 L 55 75 L 45 75 Z" fill="#D8B4F8"/>
+                        <line x1="30" y1="48" x2="70" y2="48" stroke="#FF7B9C" stroke-width="5" stroke-linecap="round"/>
+                        <line x1="46" y1="75" x2="44" y2="92" stroke="#6B4E71" stroke-width="5"/>
+                        <line x1="54" y1="75" x2="56" y2="92" stroke="#6B4E71" stroke-width="5"/>`;
+      }
+      svg.innerHTML = pathContent;
+    }
+
+    // Render Workout List
+    function renderWorkoutList() {
+      const container = document.getElementById("workoutList");
+      container.innerHTML = exercises.map((ex, i) => `
+        <div class="workout-item ${i === currentIdx ? 'active' : ''}">
+          <span>${ex.name}</span>
+          <span class="duration">45s / 15s</span>
+        </div>
+      `).join('');
+    }
+
+    // Render Mini-game Calendar
+    function renderCalendar() {
+      const grid = document.getElementById("calendarGrid");
+      grid.innerHTML = "";
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth();
+
+      document.getElementById("currentMonth").textContent = `${now.toLocaleString('th-TH', { month: 'long' })} ${year + 543}`;
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const todayDate = now.getDate();
+
+      for (let i = 0; i < firstDay; i++) {
+        grid.appendChild(document.createElement("div"));
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const cell = document.createElement("div");
+        const key = `${year}-${month + 1}-${day}`;
+        const status = checkInState[key] || '';
+
+        cell.className = `day-cell ${day === todayDate ? 'today' : ''}`;
+        cell.dataset.status = status;
+        
+        let icon = '';
+        if (status === 'done') icon = '✨';
+        else if (status === 'rest') icon = '🌸';
+        else if (status === 'missed') icon = '💤';
+
+        cell.innerHTML = `<div>${day}</div><div class="status-icon">${icon}</div>`;
+
+        // Click to toggle status manually
+        cell.onclick = () => {
+          const modes = ['', 'done', 'rest', 'missed'];
+          const next = modes[(modes.indexOf(status) + 1) % modes.length];
+          if (next) checkInState[key] = next;
+          else delete checkInState[key];
+          localStorage.setItem('workout_checkin_data', JSON.stringify(checkInState));
+          renderCalendar();
+        };
+
+        grid.appendChild(cell);
+      }
+    }
+
+    // Init
+    updateUI();
+    renderCalendar();
+  </script>
 </body>
 </html>
